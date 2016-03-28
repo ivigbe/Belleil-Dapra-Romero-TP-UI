@@ -1,8 +1,12 @@
 package ar.edu.unq.programacionui.gatoEncerrado.testDomain
 
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Accion
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionDesplazamiento
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionRecogerItem
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
 import org.junit.Before
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.*
 import org.junit.Test
+
 import static org.junit.Assert.*
 
 class HabitacionTest {

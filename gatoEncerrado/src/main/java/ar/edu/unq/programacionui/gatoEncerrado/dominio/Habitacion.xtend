@@ -30,4 +30,8 @@ class Habitacion {
 		agregarAccion(new AccionSalirLaberinto())
 	}
 	
+	def quitarItem(Item item) {
+		items.remove(item)
+	}
+	
 }
