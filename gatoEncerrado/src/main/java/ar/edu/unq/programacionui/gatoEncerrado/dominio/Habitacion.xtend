@@ -7,18 +7,32 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Habitacion {
 	
 	List<Accion> acciones = newArrayList()
-	List<Item> items = newArrayList()
+	Item itemAAgarrar
+	List<Item> itemsAdmitidos = newArrayList()
 	Boolean esHabitacionInicial
 	Boolean esHabitacionFinal
 	
 	new(){}
 	
+	new(Item aItem){
+		
+		this.itemAAgarrar = aItem
+		this.esHabitacionInicial = false
+		this.esHabitacionFinal = false
+	}
+	
 	def void agregarAccion(Accion accion) {
 		acciones.add(accion)
 	}
 	
-	def void agregarItem(Item item){
-		items.add(item)
+	def permitida(Accion accion){
+		
+		acciones.contains(accion)
+	}
+	
+	def void admitirItem(Item item){
+		
+		itemsAdmitidos.add(item)
 	}
 	
 	def marcarComoInicial() {
@@ -30,8 +44,8 @@ class Habitacion {
 		agregarAccion(new AccionSalirLaberinto())
 	}
 	
-	def quitarItem(Item item) {
-		items.remove(item)
+	def admite(Item item) {
+		itemsAdmitidos.contains(item)
 	}
 	
 }

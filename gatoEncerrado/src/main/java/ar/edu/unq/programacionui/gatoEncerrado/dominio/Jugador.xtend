@@ -2,12 +2,15 @@ package ar.edu.unq.programacionui.gatoEncerrado.dominio
 
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.List
 
 @Accessors
 class Jugador {
 	
 	ArrayList<Item> inventario
 	Habitacion habitacionActual
+	List<Laberinto> laberintosSuperados = newArrayList()
+	List<Laberinto> laberintosAbandonados = newArrayList()
 	
 	new(Habitacion actual){
 		
@@ -18,7 +21,6 @@ class Jugador {
 	def recogerItem(Item item) {
 		
 		inventario.add(item)
-		habitacionActual.quitarItem(item)
 	}
 	
 	def cantidadDeItems() {
@@ -28,6 +30,18 @@ class Jugador {
 	def moverseA(Habitacion habitacion) {
 		
 		habitacionActual = habitacion
+	}
+	
+	def usarItem(Item item) {
+		
+		if(habitacionActual.admite(item)){
+			
+			inventario.remove(item) //TODO: VER TEMA DE HABILITAR UNA ACCION.
+		}
+	}
+	
+	def void abandonarLaberinto(){
+		//TODO: VER DESPUES!
 	}
 	
 }

@@ -8,6 +8,7 @@ import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Item
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionDesplazamiento
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionRecogerItem
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionUsarItem
 
 class JugadorTest {
 	
@@ -16,28 +17,28 @@ class JugadorTest {
 	Habitacion habitacion2
 	Item pala
 	Item llave
-	Item linterna
 	AccionDesplazamiento siguienteHabitacion
 	AccionRecogerItem recogerItem
+	AccionUsarItem usarItem
 	
 	@Before
 	def void setUp(){
 		
-		habitacionActual = new Habitacion()
-		habitacion2 = new Habitacion()
-		unJugador = new Jugador(habitacionActual)
-		pala = new Item()
-		llave = new Item()
-		linterna = new Item()
 		siguienteHabitacion = new AccionDesplazamiento()
 		recogerItem = new AccionRecogerItem()
+		usarItem = new AccionUsarItem()
 		
-		habitacionActual.agregarItem(pala)
-		habitacionActual.agregarItem(llave)
-		habitacionActual.agregarItem(linterna)
+		pala = new Item("Pala", "Para pasar a habitacion 2")
+		llave = new Item("Llave", "Para abrir otra puerta")
+		
+		habitacionActual = new Habitacion()
+		habitacion2 = new Habitacion()
 		
 		habitacionActual.agregarAccion(siguienteHabitacion)
 		habitacionActual.agregarAccion(recogerItem)
+		habitacionActual.agregarAccion(usarItem)
+		
+		unJugador = new Jugador(habitacionActual)
 	}
 	
 	@Test
@@ -46,7 +47,6 @@ class JugadorTest {
 		unJugador.recogerItem(pala)
 		
 		assertTrue(unJugador.cantidadDeItems == 1)
-		assertTrue(habitacionActual.items.size == 2)
 	}
 	
 	@Test
@@ -55,5 +55,13 @@ class JugadorTest {
 		unJugador.moverseA(habitacion2)
 		
 		assertEquals(unJugador.habitacionActual, habitacion2)
+	}
+	
+	@Test
+	def void testUsoLaPalaYSeHabilitaAgarrarLaLlave(){
+		
+		unJugador.usarItem(pala)
+		
+		assertTrue(unJugador.cantidadDeItems == 0)
 	}
 }
