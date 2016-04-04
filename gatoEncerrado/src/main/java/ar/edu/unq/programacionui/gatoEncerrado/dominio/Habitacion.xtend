@@ -6,6 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Habitacion {
 	
+	String nombreHabitacion
 	List<Accion> acciones = newArrayList()
 	Item itemAAgarrar
 	List<Item> itemsAdmitidos = newArrayList()
@@ -14,7 +15,15 @@ class Habitacion {
 	
 	new(){}
 	
-	new(Item aItem){
+	new(String nombreHabitacion){
+		
+		this.nombreHabitacion = nombreHabitacion
+		this.itemAAgarrar = null
+		this.esHabitacionInicial = false
+		this.esHabitacionFinal = false
+	}
+	
+	new(String nombreHabitacion, Item aItem){
 		
 		this.itemAAgarrar = aItem
 		this.esHabitacionInicial = false
