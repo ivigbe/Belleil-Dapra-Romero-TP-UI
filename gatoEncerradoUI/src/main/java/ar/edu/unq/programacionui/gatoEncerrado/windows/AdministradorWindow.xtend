@@ -1,63 +1,40 @@
 package ar.edu.unq.programacionui.gatoEncerrado.windows
 
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Administrador
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.CheckBox
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.CheckBox
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.IndexAdministradorAppModel
+import org.uqbar.arena.layout.ColumnLayout
 
-class AdministradorWindow extends SimpleWindow<Administrador>{
+class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	
-	new(WindowOwner parent, Administrador model) {
+	new(WindowOwner parent, IndexAdministradorAppModel model) {
 		super(parent, model)
-		title = "Index administrador"
-		taskDescription = "Aca hay gato encerrado"
 	}
 	
 	override protected addActions(Panel actionsPanel) {
-		new Button(actionsPanel) => [
-			
-			caption = "Agregar Laberinto"
-			onClick [| this.modelObject.nuevoLaberinto]
-		]
-		
-		new Button(actionsPanel) => [
-			
-			caption = "Quitar Laberinto"
-			onClick [| this.modelObject.quitarLaberinto(this.modelObject.laberintoSeleccionado)]
-		]
-		
-		new Button(actionsPanel) => [
-			
-			caption = "Agregar Habitacion"
-			onClick [| this.modelObject.nuevaHabitacion]
-		]
-		
-		new Button(actionsPanel) => [
-			
-			caption = "Quitar Habitacion"
-			onClick [| this.modelObject.quitarHabitacion(this.modelObject.habitacionSeleccionada)]
-		]
-		
-		new Button(actionsPanel) => [
-			
-			caption = "Agregar Accion"
-			onClick [| ] //TODO: Ver como relacionar a pantalla de agregar una accion
-		]
-		
-		//VER ESTA FUNCION
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		mainPanel.layout = new HorizontalLayout()
+		//mainPanel.layout = new ColumnLayout(3)
+		
+		this.crearListadoDeLaberintos(mainPanel)
+		
+		this.crearListadoDeHabitaciones(mainPanel)
+		
+		this.crearListadoDeAcciones(mainPanel)
+	}
+	
+	def void crearListadoDeLaberintos(Panel mainPanel){
 		
 		val laberintosPanel = new Panel(mainPanel)
 		laberintosPanel.layout = new VerticalLayout()
@@ -65,10 +42,26 @@ class AdministradorWindow extends SimpleWindow<Administrador>{
 		new Label(laberintosPanel).text = "Laberintos"
 		new List(laberintosPanel) => [
 			
-			allowNull = false
-			items <=> "laberintos"
+			items <=> "admin.laberintos"
 			value <=> "laberintoSeleccionado"
 		]
+		
+		val laberintosButtonPanel = new Panel(laberintosPanel).layout = new HorizontalLayout()
+		
+		new Button(laberintosButtonPanel) => [
+			
+			caption = "Agregar Laberinto"
+			onClick [| this.modelObject.nuevoLaberinto]
+		]
+		
+		new Button(laberintosButtonPanel) => [
+			
+			caption = "Quitar Laberinto"
+			onClick [| this.modelObject.admin.quitarLaberinto(this.modelObject.laberintoSeleccionado)]
+		]
+	}
+	
+	def void crearListadoDeHabitaciones(Panel mainPanel){
 		
 		val habitacionesPanel = new Panel(mainPanel)
 		habitacionesPanel.layout = new VerticalLayout()
@@ -87,36 +80,72 @@ class AdministradorWindow extends SimpleWindow<Administrador>{
 			value <=> "habitacionSeleccionada"
 		]
 		
-		val edicionHabitacionLabel = new Panel(mainPanel)
-		edicionHabitacionLabel.layout = new VerticalLayout()
+		val habitacionesButtonPanel = new Panel(habitacionesPanel).layout = new HorizontalLayout()
 		
-		new Label(edicionHabitacionLabel).text = "Habitaciones de: "
-		new Label(edicionHabitacionLabel).bindValueToProperty("habitacionSeleccionada.nombreHabitacion")
+		new Button(habitacionesButtonPanel) => [
+			
+			caption = "Agregar Habitacion"
+			onClick [| this.modelObject.nuevaHabitacion]
+		]
 		
-		new TextBox(edicionHabitacionLabel) => [
+		new Button(habitacionesButtonPanel) => [
+			
+			caption = "Quitar Habitacion"
+			onClick [| this.modelObject.quitarHabitacion(this.modelObject.habitacionSeleccionada)]
+		]
+	}
+	
+	def void crearListadoDeAcciones(Panel mainPanel){
+		
+		val edicionHabitacionPanel = new Panel(mainPanel)
+		edicionHabitacionPanel.layout = new VerticalLayout()
+		
+		new Label(edicionHabitacionPanel).text = "Habitacion Seleccionada: "
+		new Label(edicionHabitacionPanel).bindValueToProperty("habitacionSeleccionada.nombreHabitacion")
+		
+		new TextBox(edicionHabitacionPanel) => [
 			
 			value <=> "habitacionSeleccionada.nombreHabitacion"
 		]
 		
-		new CheckBox(mainPanel) => [
+		val esInicialPanel = new Panel(edicionHabitacionPanel)
+		esInicialPanel.layout = new ColumnLayout(2)
+		
+		new CheckBox(esInicialPanel) => [
 			
 			value <=> "habitacionSeleccionada.esHabitacionInicial"
 		]
 		
-		new Label(mainPanel).text = "Es Inicial?"
+		new Label(esInicialPanel).text = "Es Inicial?"
 		
-		new CheckBox(mainPanel) => [
+		val esFinalPanel = new Panel(edicionHabitacionPanel).layout = new ColumnLayout(2)
+		
+		new CheckBox(esFinalPanel) => [
 			
 			value <=> "habitacionSeleccionada.esHabitacionFinal"
 		]
-		new Label(mainPanel).text = "Es Final?"
+		new Label(esFinalPanel).text = "Es Final?"
 		
-		new Label(edicionHabitacionLabel).text = "Acciones"
+		new Label(edicionHabitacionPanel).text = "Acciones"
 		
-		new List(edicionHabitacionLabel) => [
+		new List(edicionHabitacionPanel) => [
 			
 			items <=> "habitacionSeleccionada.acciones"
 			value <=> "accionSeleccionada"
+		]
+		
+		val edicionHabitacionButtonPanel = new Panel(edicionHabitacionPanel).layout = new HorizontalLayout()
+		
+		new Button(edicionHabitacionButtonPanel) => [
+			
+			caption = "Agregar Accion"
+			onClick [| new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada)]
+		]
+		
+		new Button(edicionHabitacionButtonPanel) => [
+			
+			caption = "Quitar Accion"
+			onClick [| modelObject.quitarAccion(this.modelObject.accionSeleccionada)]
 		]
 	}
 	

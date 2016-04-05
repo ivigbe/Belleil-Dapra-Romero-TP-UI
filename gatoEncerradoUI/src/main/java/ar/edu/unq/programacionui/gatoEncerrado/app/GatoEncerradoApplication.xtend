@@ -1,13 +1,13 @@
 package ar.edu.unq.programacionui.gatoEncerrado.app
 
-import org.uqbar.arena.Application
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Administrador
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.IndexAdministradorAppModel
 import ar.edu.unq.programacionui.gatoEncerrado.windows.AdministradorWindow
+import org.uqbar.arena.Application
 
 class GatoEncerradoApplication extends Application{
 	
 	override protected createMainWindow() {
-		new AdministradorWindow(this, new Administrador)
+		new AdministradorWindow(this, new IndexAdministradorAppModel)
 	}
 	
 	def static main(String[] args) {

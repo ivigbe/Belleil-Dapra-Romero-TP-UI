@@ -34,6 +34,10 @@ class Habitacion {
 		acciones.add(accion)
 	}
 	
+	def removerAccion(Accion accion) {
+		acciones.remove(accion)
+	}
+	
 	def permitida(Accion accion){
 		
 		acciones.contains(accion)
@@ -56,5 +60,4 @@ class Habitacion {
 	def admite(Item item) {
 		itemsAdmitidos.contains(item)
 	}
-	
 }
