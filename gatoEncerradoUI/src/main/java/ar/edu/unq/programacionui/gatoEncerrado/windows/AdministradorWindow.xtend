@@ -14,6 +14,7 @@ import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import ar.edu.unq.programacionui.gatoEncerrado.appModel.IndexAdministradorAppModel
 import org.uqbar.arena.layout.ColumnLayout
+import java.awt.Color
 
 class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	
@@ -25,13 +26,24 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		mainPanel.layout = new HorizontalLayout()
 		
-		this.crearListadoDeLaberintos(mainPanel)
+		mainPanel.layout = new VerticalLayout
+		val headerPanel = new Panel(mainPanel)
+		new Label(headerPanel) => [
+			text = "Aca hay gato encerrado..."
+			background = Color.RED
+			width = 830 
+			height = 50
+		] 
 		
-		this.crearListadoDeHabitaciones(mainPanel)
+		val contentPanel = new Panel(mainPanel)
+		contentPanel.layout = new HorizontalLayout
 		
-		this.crearListadoDeAcciones(mainPanel)
+		this.crearListadoDeLaberintos(contentPanel)
+		
+		this.crearListadoDeHabitaciones(contentPanel)
+		
+		this.crearListadoDeAcciones(contentPanel)
 	}
 	
 	def void crearListadoDeLaberintos(Panel mainPanel){

@@ -18,22 +18,29 @@ class Jugador {
 		habitacionActual = actual
 	}
 	
-	def recogerItem(Item item) {
-		
-		inventario.add(item)
+	def recogerItem(AccionRecogerItem accionItem) {
+		inventario.add(accionItem.itemARecoger)
+		habitacionActual.removerAccion(accionItem)
 	}
 	
 	def cantidadDeItems() {
 		inventario.size
 	}
 	
-	def moverseA(Habitacion habitacion) {
-		
-		habitacionActual = habitacion
+	def moverseA(AccionDesplazamiento accionHabitacion) {
+		var habitacionAnterior = habitacionActual
+		habitacionActual = accionHabitacion.proximaHabitacion
+		habitacionAnterior.removerAccion(accionHabitacion)
 	}
 	
-	def usarItem(Item item) {
-		
+	def usarItem(Item itemAUsar, AccionUsarItem accion) {
+		if(itemAUsar.nombre == accion.itemEsperado){
+			habitacionActual.agregarAccion(accion.accionResultante)
+			habitacionActual.removerAccion(accion)
+		}
+		else{
+			throw new ItemNoEncontradoException()
+		}
 		
 	}
 	
@@ -41,4 +48,9 @@ class Jugador {
 		//TODO: VER DESPUES!
 	}
 	
+}
+
+class ItemNoEncontradoException extends Exception{
+	new(){
+	super("No tienes el item esperado!")}
 }

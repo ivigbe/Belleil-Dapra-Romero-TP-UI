@@ -6,9 +6,18 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class AccionDesplazamiento extends Accion{
 	
-	List<Habitacion> habitacionesLindantes = newArrayList()
+	Habitacion proximaHabitacion
+	
+	new(Habitacion habitacion){
+		proximaHabitacion = habitacion
+	}
+	
+	new() {
+		
+	}
 	
 	override realizarAccion() {
+		
 		
 	}
 	
