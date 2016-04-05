@@ -34,10 +34,7 @@ class Jugador {
 	
 	def usarItem(Item item) {
 		
-		if(habitacionActual.admite(item)){
-			
-			inventario.remove(item) //TODO: VER TEMA DE HABILITAR UNA ACCION.
-		}
+		
 	}
 	
 	def void abandonarLaberinto(){

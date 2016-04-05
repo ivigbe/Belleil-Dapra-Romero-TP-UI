@@ -25,7 +25,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		//mainPanel.layout = new ColumnLayout(3)
+		mainPanel.layout = new HorizontalLayout()
 		
 		this.crearListadoDeLaberintos(mainPanel)
 		

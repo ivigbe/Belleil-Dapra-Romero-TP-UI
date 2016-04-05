@@ -8,8 +8,7 @@ class Habitacion {
 	
 	String nombreHabitacion
 	List<Accion> acciones = newArrayList()
-	Item itemAAgarrar
-	List<Item> itemsAdmitidos = newArrayList()
+	List<Item> items = newArrayList()
 	Boolean esHabitacionInicial
 	Boolean esHabitacionFinal
 	
@@ -18,14 +17,6 @@ class Habitacion {
 	new(String nombreHabitacion){
 		
 		this.nombreHabitacion = nombreHabitacion
-		this.itemAAgarrar = null
-		this.esHabitacionInicial = false
-		this.esHabitacionFinal = false
-	}
-	
-	new(String nombreHabitacion, Item aItem){
-		
-		this.itemAAgarrar = aItem
 		this.esHabitacionInicial = false
 		this.esHabitacionFinal = false
 	}
@@ -43,9 +34,9 @@ class Habitacion {
 		acciones.contains(accion)
 	}
 	
-	def void admitirItem(Item item){
+	def void agregarItem(Item item){
 		
-		itemsAdmitidos.add(item)
+		items.add(item)
 	}
 	
 	def marcarComoInicial() {
@@ -55,9 +46,5 @@ class Habitacion {
 	def marcarComoFinal() {
 		esHabitacionFinal = true
 		agregarAccion(new AccionSalirLaberinto())
-	}
-	
-	def admite(Item item) {
-		itemsAdmitidos.contains(item)
 	}
 }
