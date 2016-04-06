@@ -17,6 +17,14 @@ class IndexAdministradorAppModel {
 	Accion accionSeleccionada
 	
 	new(){}
+	new(Administrador administrador, Laberinto laberinto, Habitacion habitacion){
+		admin = administrador
+		laberintoSeleccionado = laberinto
+		habitacionSeleccionada = habitacion
+		admin.agregarLaberinto(laberinto)
+		//accionSeleccionada = accion
+		 
+	}
 	
 	def void nuevoLaberinto(){
 		

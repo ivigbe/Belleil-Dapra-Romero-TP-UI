@@ -79,7 +79,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		habitacionesPanel.layout = new VerticalLayout()
 		
 		new Label(habitacionesPanel).text = "Habitaciones de: "
-		new Label(habitacionesPanel).bindValueToProperty("laberintoSeleccionado.nombreLaberinto")
+		new Label(habitacionesPanel).value <=> "laberintoSeleccionado.nombreLaberinto"
 		
 		new TextBox(habitacionesPanel) => [
 			
@@ -97,7 +97,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Button(habitacionesButtonPanel) => [
 			
 			caption = "Agregar Habitacion"
-			onClick [| this.modelObject.nuevaHabitacion]
+			onClick [| this.modelObject.nuevaHabitacion] //TODO: VER TEMA ONCLICK DE TODOS LOS BOTONES MENOS EL AGREGAR ACCION.
 		]
 		
 		new Button(habitacionesButtonPanel) => [
@@ -151,7 +151,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Button(edicionHabitacionButtonPanel) => [
 			
 			caption = "Agregar Accion"
-			onClick [| new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada)]
+			onClick [| new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada).open]
 		]
 		
 		new Button(edicionHabitacionButtonPanel) => [
