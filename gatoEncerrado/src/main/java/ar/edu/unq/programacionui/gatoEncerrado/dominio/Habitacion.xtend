@@ -41,12 +41,9 @@ class Habitacion {
 		items.add(item)
 	}
 	
-	def marcarComoInicial() {
-		esHabitacionInicial = true
-	}
-	
 	def marcarComoFinal() {
 		esHabitacionFinal = true
 		agregarAccion(new AccionSalirLaberinto())
 	}
+	
 }

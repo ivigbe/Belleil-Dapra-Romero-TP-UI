@@ -5,15 +5,17 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors 
 class AccionRecogerItem extends Accion{
 	
-	Item itemARecoger		
+	Item itemARecoger
+	
 	new(){}
 	
 	new(Item item){
 		itemARecoger = item
+		this.descripcionAccion = "Item a recoger: " + itemARecoger.nombre
 	}
 	
 	override realizarAccion() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		
 	}
 	
 }

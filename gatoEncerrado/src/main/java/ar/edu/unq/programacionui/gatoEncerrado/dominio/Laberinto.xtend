@@ -3,6 +3,7 @@ package ar.edu.unq.programacionui.gatoEncerrado.dominio
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.UserException
 
 @Accessors
 @Observable
@@ -31,4 +32,35 @@ class Laberinto {
 		habitaciones.size	
 	}
 	
+	def validarSiHayHabitacionInicial(){
+		if(hayHabitacionInicial){
+			throw new UserException("Ya hay una habitacion marcada como inicial")
+		}
+	}	
+	
+	def validarSiHayHabitacionFinal(){
+		if(hayHabitacionInicial){
+			throw new UserException("Ya hay una habitacion marcada como final")
+		}
+	}
+	
+	def hayHabitacionInicial(){
+		
+		for(Habitacion h : this.habitaciones){
+			if(h.esHabitacionInicial){
+				return true
+			}
+		}
+		return false
+	}
+	
+	def hayHabitacionFinal(){
+		
+		for(Habitacion h : this.habitaciones){
+			if(h.esHabitacionFinal){
+				return true
+			}
+		}
+		return false
+	}
 }

@@ -46,4 +46,12 @@ class IndexAdministradorAppModel {
 		habitacionSeleccionada.removerAccion(accion)
 	}
 	
+	def getHabitacionSeleccionadaEsHabitacionInicial(){
+		habitacionSeleccionada.esHabitacionInicial
+	}
+	
+	def setHabitacionSeleccionadaEsHabitacionInicial(Boolean b){
+		laberintoSeleccionado.validarSiHayHabitacionInicial()
+		habitacionSeleccionada.esHabitacionInicial = b
+	}
 }

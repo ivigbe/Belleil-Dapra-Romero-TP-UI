@@ -15,6 +15,11 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import ar.edu.unq.programacionui.gatoEncerrado.appModel.IndexAdministradorAppModel
 import org.uqbar.arena.layout.ColumnLayout
 import java.awt.Color
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
+import org.uqbar.arena.bindings.PropertyAdapter
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Accion
+import org.uqbar.commons.model.UserException
 
 class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	
@@ -54,7 +59,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Label(laberintosPanel).text = "Laberintos"
 		new List(laberintosPanel) => [
 			
-			items <=> "admin.laberintos"
+			(items <=> "admin.laberintos").adapter = new PropertyAdapter(Laberinto, "nombreLaberinto")
 			value <=> "laberintoSeleccionado"
 		]
 		
@@ -88,7 +93,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		
 		new List(habitacionesPanel) => [
 			
-			items <=> "laberintoSeleccionado.habitaciones"
+			(items <=> "laberintoSeleccionado.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
 			value <=> "habitacionSeleccionada"
 		]
 		
@@ -123,10 +128,16 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		val esInicialPanel = new Panel(edicionHabitacionPanel)
 		esInicialPanel.layout = new ColumnLayout(2)
 		
-		new CheckBox(esInicialPanel) => [
+		try{
+			
+			new CheckBox(esInicialPanel) => [
 			
 			value <=> "habitacionSeleccionada.esHabitacionInicial"
-		]
+			]
+		}
+		catch(UserException u){
+			
+		}
 		
 		new Label(esInicialPanel).text = "Es Inicial?"
 		
@@ -142,7 +153,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		
 		new List(edicionHabitacionPanel) => [
 			
-			items <=> "habitacionSeleccionada.acciones"
+			(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "descripcionAccion")
 			value <=> "accionSeleccionada"
 		]
 		

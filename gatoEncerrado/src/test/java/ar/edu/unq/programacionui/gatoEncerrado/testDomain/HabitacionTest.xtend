@@ -28,7 +28,7 @@ class HabitacionTest {
 	@Test
 	def void testMarcoHabitacionComoInicial(){
 		
-		habitacion.marcarComoInicial()
+		habitacion.esHabitacionInicial = true
 		
 		assertTrue(habitacion.esHabitacionInicial)
 	}

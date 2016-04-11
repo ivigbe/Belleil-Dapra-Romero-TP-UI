@@ -5,14 +5,16 @@ import ar.edu.unq.programacionui.gatoEncerrado.dummyData.DummyData
 import ar.edu.unq.programacionui.gatoEncerrado.windows.AdministradorWindow
 import org.uqbar.arena.Application
 
-class GatoEncerradoApplication extends Application{
-	
+class GatoEncerradoApplication extends Application {
+
 	override protected createMainWindow() {
 		var dummyData = new DummyData()
-		new AdministradorWindow(this, new IndexAdministradorAppModel(dummyData.crearAdminDummy, dummyData.crearLaberintoDummy, dummyData.crearHabitacionDummy))
-		
+		new AdministradorWindow(this,
+			new IndexAdministradorAppModel(dummyData.crearAdminDummy, dummyData.crearLaberintoDummy,
+				dummyData.crearHabitacionDummy("Habitacion Inicial")))
+
 	}
-	
+
 	def static main(String[] args) {
 		new GatoEncerradoApplication().start
 	}

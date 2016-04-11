@@ -11,6 +11,7 @@ class AccionUsarItem extends Accion{
 	new(Item item, Accion accion){
 		itemEsperado = item
 		accionResultante = accion
+		this.descripcionAccion = "Usa " + itemEsperado.nombre + "para " + accionResultante.descripcionAccion
 	}
 	
 	new() {
