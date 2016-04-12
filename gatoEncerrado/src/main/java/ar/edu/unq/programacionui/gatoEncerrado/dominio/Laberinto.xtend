@@ -39,7 +39,7 @@ class Laberinto {
 	}	
 	
 	def validarSiHayHabitacionFinal(){
-		if(hayHabitacionInicial){
+		if(hayHabitacionFinal){
 			throw new UserException("Ya hay una habitacion marcada como final")
 		}
 	}

@@ -10,7 +10,7 @@ class DummyData {
 	def crearLaberintoDummy(){
 		new Laberinto => [
 			nombreLaberinto = "Laberinto default"
-			agregarHabitacion(crearHabitacionDummy("Habitacion Inicial"))
+			agregarHabitacion(crearHabitacionDummy("Habitacion Inicial", it))
 		]
 	}
 	
@@ -27,9 +27,10 @@ class DummyData {
 		new AccionDesplazamiento(prox)
 	}
 	
-	def crearHabitacionDummy(String nombre){
+	def crearHabitacionDummy(String nombre, Laberinto l){
 		new Habitacion => [
 			nombreHabitacion = nombre
+			laberinto = l
 			agregarAccion(crearAccionDummy(it))
 		]
 		

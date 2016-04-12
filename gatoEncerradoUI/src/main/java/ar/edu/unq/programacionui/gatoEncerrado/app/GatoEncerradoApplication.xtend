@@ -9,9 +9,10 @@ class GatoEncerradoApplication extends Application {
 
 	override protected createMainWindow() {
 		var dummyData = new DummyData()
+		var laberintoDummy = dummyData.crearLaberintoDummy
+		var habitacionDummy = laberintoDummy.habitaciones.get(0)
 		new AdministradorWindow(this,
-			new IndexAdministradorAppModel(dummyData.crearAdminDummy, dummyData.crearLaberintoDummy,
-				dummyData.crearHabitacionDummy("Habitacion Inicial")))
+			new IndexAdministradorAppModel(dummyData.crearAdminDummy, laberintoDummy, habitacionDummy))
 
 	}
 

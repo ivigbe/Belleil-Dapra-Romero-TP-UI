@@ -127,18 +127,13 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		
 		val esInicialPanel = new Panel(edicionHabitacionPanel)
 		esInicialPanel.layout = new ColumnLayout(2)
-		
-		try{
-			
-			new CheckBox(esInicialPanel) => [
+	
+		new CheckBox(esInicialPanel) => [
 			
 			value <=> "habitacionSeleccionada.esHabitacionInicial"
 			]
-		}
-		catch(UserException u){
-			
-		}
 		
+			
 		new Label(esInicialPanel).text = "Es Inicial?"
 		
 		val esFinalPanel = new Panel(edicionHabitacionPanel).layout = new ColumnLayout(2)

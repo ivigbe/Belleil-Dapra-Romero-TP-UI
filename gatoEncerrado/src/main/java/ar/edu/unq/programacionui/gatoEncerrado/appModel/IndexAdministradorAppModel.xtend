@@ -6,6 +6,7 @@ import ar.edu.unq.programacionui.gatoEncerrado.dominio.Accion
 import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Administrador
 import org.uqbar.commons.utils.Observable
+import static org.uqbar.commons.model.ObservableUtils.*
 
 @Accessors
 @Observable
@@ -33,7 +34,7 @@ class IndexAdministradorAppModel {
 	
 	def void nuevaHabitacion(){
 		
-		laberintoSeleccionado.agregarHabitacion(new Habitacion("nueva Habitacion"))
+		laberintoSeleccionado.agregarHabitacion(new Habitacion("nueva Habitacion", laberintoSeleccionado))
 	}
 	
 	def void quitarHabitacion(Habitacion h){
@@ -44,14 +45,5 @@ class IndexAdministradorAppModel {
 	def void quitarAccion(Accion accion) {
 		
 		habitacionSeleccionada.removerAccion(accion)
-	}
-	
-	def getHabitacionSeleccionadaEsHabitacionInicial(){
-		habitacionSeleccionada.esHabitacionInicial
-	}
-	
-	def setHabitacionSeleccionadaEsHabitacionInicial(Boolean b){
-		laberintoSeleccionado.validarSiHayHabitacionInicial()
-		habitacionSeleccionada.esHabitacionInicial = b
 	}
 }
