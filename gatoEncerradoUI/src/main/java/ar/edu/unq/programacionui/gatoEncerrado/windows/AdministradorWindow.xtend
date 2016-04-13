@@ -35,6 +35,11 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		mainPanel.layout = new VerticalLayout
 		val headerPanel = new Panel(mainPanel)
 		new Label(headerPanel) => [
+			
+			text = "Hola " + this.modelObject.admin.nombre + "!" + " " + "Administra tus laberintos!"
+		]
+		
+		new Label(headerPanel) => [
 			text = "Aca hay gato encerrado..."
 			background = Color.RED
 			width = 830 

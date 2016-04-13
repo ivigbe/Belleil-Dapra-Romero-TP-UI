@@ -1,15 +1,15 @@
 package ar.edu.unq.programacionui.gatoEncerrado.appModel
 
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Accion
-import org.eclipse.xtend.lib.annotations.Accessors
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Administrador
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 
 @Accessors
 @Observable
-class IndexAdministradorAppModel {
+class IndexAdministradorAppModel{
 	
 	Administrador admin
 	Laberinto laberintoSeleccionado

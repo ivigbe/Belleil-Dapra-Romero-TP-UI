@@ -1,8 +1,10 @@
 package ar.edu.unq.programacionui.gatoEncerrado.dominio
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.TransactionalAndObservable
 
 @Accessors 
+@TransactionalAndObservable
 class AccionRecogerItem extends Accion{
 	
 	Item itemARecoger
