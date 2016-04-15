@@ -1,20 +1,22 @@
 package ar.edu.unq.programacionui.gatoEncerrado.windows
 
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionDesplazamiento
-import org.uqbar.arena.aop.windows.TransactionalDialog
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionDesplazamientoAppModel
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.bindings.PropertyAdapter
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
 
-class AccionIrAOtraHabitacionWindow extends TransactionalDialog<AccionDesplazamiento>{
+class AccionIrAOtraHabitacionWindow extends Dialog<AccionDesplazamientoAppModel>{
 	
-	new(WindowOwner parent, AccionDesplazamiento model) {
+	new(WindowOwner parent, AccionDesplazamientoAppModel model) {
 		super(parent, model)
 		title = "Agregar Accion de ir a otra Habitacion"
 	}
@@ -24,7 +26,7 @@ class AccionIrAOtraHabitacionWindow extends TransactionalDialog<AccionDesplazami
 		new Button(actionsPanel) => [
 			
 			caption = "Aceptar"
-			onAccept [| ]
+			onClick [| this.agregarAccionAListadoDeAcciones()]
 		]
 		
 		new Button(actionsPanel) => [
@@ -43,9 +45,17 @@ class AccionIrAOtraHabitacionWindow extends TransactionalDialog<AccionDesplazami
 		new Label(mainPanel).text = "Selecciona una habitacion a la cual ir"
 		new Selector(mainPanel) => [
 			
-			items <=> "habitacionesLindantes"
-			value <=> "habitacionAMoverse"
+			(items <=> "habitacionesDesplazamiento").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
+			value <=> "accionDespl.proximaHabitacion"
 		]
+	}
+	
+	def agregarAccionAListadoDeAcciones() {
+		
+		this.modelObject.darDescripcionAccion()
+		this.modelObject.habitacionActualSeleccionada.agregarAccion(this.modelObject.accionDespl)
+		
+		this.accept
 	}
 	
 }

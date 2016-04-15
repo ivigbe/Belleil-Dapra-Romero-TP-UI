@@ -22,7 +22,7 @@ class AccionAgarrarElementoWindow extends TransactionalDialog<AccionRecogerItem>
 		
 		new Button(actionsPanel) => [
 			caption = "Aceptar"
-			onAccept [| ]//VER COMO PASAR EL ELEMENTO AGREGADO A LA PANTALLA DE ADMIN
+			onAccept [| ]//TODO: HACER ALGO PARECIDO A LA PANTALLA DE IR A OTRA HABITACION.
 			disableOnError
 		]
 

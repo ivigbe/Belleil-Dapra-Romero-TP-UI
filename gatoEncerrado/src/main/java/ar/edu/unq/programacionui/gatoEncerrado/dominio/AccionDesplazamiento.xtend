@@ -1,10 +1,10 @@
 package ar.edu.unq.programacionui.gatoEncerrado.dominio
 
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.utils.TransactionalAndObservable
+import org.uqbar.commons.utils.Observable
 
 @Accessors
-@TransactionalAndObservable
+@Observable
 class AccionDesplazamiento extends Accion{
 	
 	Habitacion proximaHabitacion

@@ -1,5 +1,13 @@
 package ar.edu.unq.programacionui.gatoEncerrado.windows
 
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.AgregarAccionAppModel
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.IndexAdministradorAppModel
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Accion
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
+import java.awt.Color
+import org.uqbar.arena.bindings.PropertyAdapter
+import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
@@ -12,14 +20,6 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import ar.edu.unq.programacionui.gatoEncerrado.appModel.IndexAdministradorAppModel
-import org.uqbar.arena.layout.ColumnLayout
-import java.awt.Color
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
-import org.uqbar.arena.bindings.PropertyAdapter
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Accion
-import org.uqbar.commons.model.UserException
 
 class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	
@@ -107,7 +107,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Button(habitacionesButtonPanel) => [
 			
 			caption = "Agregar Habitacion"
-			onClick [| this.modelObject.nuevaHabitacion] //TODO: VER TEMA ONCLICK DE TODOS LOS BOTONES MENOS EL AGREGAR ACCION.
+			onClick [| this.modelObject.nuevaHabitacion]
 		]
 		
 		new Button(habitacionesButtonPanel) => [
@@ -162,7 +162,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Button(edicionHabitacionButtonPanel) => [
 			
 			caption = "Agregar Accion"
-			onClick [| new AgregarAccionWindow(this, this.modelObject.habitacionSeleccionada).open]
+			onClick [| new AgregarAccionWindow(this, new AgregarAccionAppModel(this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado.habitaciones, this.modelObject.habitacionSeleccionada.items, this.modelObject.laberintoSeleccionado.itemsDeLasHabitaciones)).open]
 		]
 		
 		new Button(edicionHabitacionButtonPanel) => [

@@ -32,6 +32,18 @@ class Laberinto {
 		habitaciones.size	
 	}
 	
+	def itemsDeLasHabitaciones(){
+		
+		var res = newArrayList()
+		
+		for(h : this.habitaciones){
+			
+			res.addAll(h.items)
+		}
+		
+		res
+	}
+	
 	def validarSiHayHabitacionInicial(){
 		if(hayHabitacionInicial){
 			throw new UserException("Ya hay una habitacion marcada como inicial")

@@ -6,7 +6,6 @@ import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import static org.uqbar.commons.model.ObservableUtils.*
 
 @Accessors
 @Observable
