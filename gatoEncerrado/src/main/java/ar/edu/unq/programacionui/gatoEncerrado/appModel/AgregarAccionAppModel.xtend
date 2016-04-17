@@ -13,16 +13,14 @@ class AgregarAccionAppModel {
 	
 	Habitacion habitacionSeleccionada
 	List<Habitacion> habitaciones
-	List<Item> itemsDeLaHabitacion
 	List<Item> itemsDelLaberinto
 	
 	new(){}
 	
-	new(Habitacion habSeleccionada, List<Habitacion> habitaciones, List<Item> itemsDeLaHabitacion, ArrayList<Item> itemsDelLaberinto) {
+	new(Habitacion habSeleccionada, List<Habitacion> habitaciones, ArrayList<Item> itemsDelLaberinto) {
 		
 		this.habitacionSeleccionada = habSeleccionada
 		this.habitaciones = habitaciones
-		this.itemsDeLaHabitacion = itemsDeLaHabitacion
 		this.itemsDelLaberinto = itemsDelLaberinto
 	}
 	
