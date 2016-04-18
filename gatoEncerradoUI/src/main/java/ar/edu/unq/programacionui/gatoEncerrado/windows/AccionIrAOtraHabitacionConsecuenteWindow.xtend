@@ -1,6 +1,8 @@
 package ar.edu.unq.programacionui.gatoEncerrado.windows
 
-import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionDesplazamientoAppModel
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionDesplazamientoConsecuenteAppModel
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
+import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
@@ -11,12 +13,10 @@ import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.bindings.PropertyAdapter
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
 
-class AccionIrAOtraHabitacionWindow extends Dialog<AccionDesplazamientoAppModel>{
+class AccionIrAOtraHabitacionConsecuenteWindow extends Dialog<AccionDesplazamientoConsecuenteAppModel>{
 	
-	new(WindowOwner parent, AccionDesplazamientoAppModel model) {
+	new(WindowOwner parent, AccionDesplazamientoConsecuenteAppModel model) {
 		super(parent, model)
 		title = "Agregar Accion de ir a otra Habitacion"
 	}
@@ -26,7 +26,7 @@ class AccionIrAOtraHabitacionWindow extends Dialog<AccionDesplazamientoAppModel>
 		new Button(actionsPanel) => [
 			
 			caption = "Aceptar"
-			onClick [| this.agregarAccionAListadoDeAcciones()]
+			onClick [| this.agregarAccion()]
 		]
 		
 		new Button(actionsPanel) => [
@@ -50,11 +50,10 @@ class AccionIrAOtraHabitacionWindow extends Dialog<AccionDesplazamientoAppModel>
 		]
 	}
 	
-	def agregarAccionAListadoDeAcciones() {
+	def agregarAccion() {
 		
 		this.modelObject.darDescripcionAccion()
-			
-			this.modelObject.habitacionActualSeleccionada.agregarAccion(this.modelObject.accionDespl)
+		this.modelObject.agregarAccionResultanteALaOriginal()
 		
 		this.accept
 	}

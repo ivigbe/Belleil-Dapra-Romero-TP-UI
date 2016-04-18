@@ -1,26 +1,26 @@
 package ar.edu.unq.programacionui.gatoEncerrado.appModel
 
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionRecogerItem
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.AccionUsarItem
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Item
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 
 @Accessors
 @Observable
-class AccionRecogerItemAppModel {
+class AccionRecogerItemConsecuenteAppModel {
 	
 	AccionRecogerItem accionDeRecogerItem
-	Habitacion habitacionSeleccionada
 	Item itemNuevo
+	AccionUsarItem accionOriginal
 	
 	
-	new(Habitacion habSeleccionada, AccionRecogerItem accion){
+	new(AccionUsarItem original, AccionRecogerItem accion){
 		
 		this.itemNuevo = new Item()
-		this.habitacionSeleccionada = habSeleccionada
 		this.accionDeRecogerItem = accion
 		this.accionDeRecogerItem.itemARecoger = itemNuevo
+		this.accionOriginal = original
 	}
 	
 	def darDescripcionAccion(){
@@ -29,4 +29,5 @@ class AccionRecogerItemAppModel {
 	}
 	
 	
+
 }

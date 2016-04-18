@@ -1,8 +1,10 @@
 package ar.edu.unq.programacionui.gatoEncerrado.dominio
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class AccionUsarItem extends Accion{
 	
 	Item itemEsperado
@@ -11,7 +13,6 @@ class AccionUsarItem extends Accion{
 	new(Item item, Accion accion){
 		itemEsperado = item
 		accionResultante = accion
-		this.descripcionAccion = "Usa " + itemEsperado.nombre + "para " + accionResultante.descripcionAccion
 	}
 	
 	new() {

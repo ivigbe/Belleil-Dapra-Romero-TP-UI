@@ -1,6 +1,6 @@
 package ar.edu.unq.programacionui.gatoEncerrado.windows
 
-import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionUsarElementoAppModel
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionUsarElementoConsecuenteAppModel
 import ar.edu.unq.programacionui.gatoEncerrado.appModel.AgregarAccionConsecuenteAppModel
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Item
 import org.uqbar.arena.bindings.PropertyAdapter
@@ -15,9 +15,10 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
-class AccionUsarElementoWindow extends Dialog<AccionUsarElementoAppModel> {
+class AccionUsarElementoConsecuenteWindow extends Dialog<AccionUsarElementoConsecuenteAppModel> {
 
-	new(WindowOwner owner, AccionUsarElementoAppModel model) {
+
+	new(WindowOwner owner, AccionUsarElementoConsecuenteAppModel model) {
 		super(owner, model)
 		title = "Agregar accion de usar elemento"
 	}
@@ -44,8 +45,7 @@ class AccionUsarElementoWindow extends Dialog<AccionUsarElementoAppModel> {
 			onClick [| abrirVentanaDeAgregarAccionConsecuente]
 		]
 
-		new Label(accionPanel).text = this.modelObject.darDescripcionDeAccion
-		
+		// new Label(accionPanel).text = this.modelObject.darDescripcionDeAccion()
 		val buttonPanel = new Panel(mainPanel).layout = new HorizontalLayout
 
 		new Button(buttonPanel) => [
@@ -63,7 +63,7 @@ class AccionUsarElementoWindow extends Dialog<AccionUsarElementoAppModel> {
 	}
 
 	def agregarAccion() {
-		this.modelObject.habitacionSeleccionada.agregarAccion(this.modelObject.accionDeUsarItem)
+		this.modelObject.agregarAccionResultanteALaOriginal()
 		this.modelObject.darDescripcionDeAccion()
 
 		this.accept
@@ -73,6 +73,6 @@ class AccionUsarElementoWindow extends Dialog<AccionUsarElementoAppModel> {
 
 		new AgregarAccionConsecuenteWindow(this,
 			new AgregarAccionConsecuenteAppModel(
-				this.modelObject.accionDeUsarItem, this.modelObject.obtenerHabitaciones)).open
+				this.modelObject.accionDeUsarItem, this.modelObject.habitaciones)).open
 	}
 }

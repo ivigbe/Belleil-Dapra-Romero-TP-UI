@@ -22,13 +22,18 @@ class IndexAdministradorAppModel{
 		laberintoSeleccionado = laberinto
 		habitacionSeleccionada = habitacion
 		admin.agregarLaberinto(laberinto)
-		//accionSeleccionada = accion
 		 
 	}
 	
 	def void nuevoLaberinto(){
+		var laberintoNuevo = new Laberinto("nuevo Laberinto")
+		this.laberintoSeleccionado = laberintoNuevo
 		
-		admin.agregarLaberinto(new Laberinto("nuevo Laberinto"))
+		var habitacionNueva = new Habitacion("nueva Habitacion", laberintoNuevo)
+		this.habitacionSeleccionada = habitacionNueva
+		
+		laberintoNuevo.agregarHabitacion(habitacionNueva)
+		admin.agregarLaberinto(laberintoNuevo)
 	}
 	
 	def void nuevaHabitacion(){

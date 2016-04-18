@@ -162,7 +162,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Button(edicionHabitacionButtonPanel) => [
 			
 			caption = "Agregar Accion"
-			onClick [| new AgregarAccionWindow(this, new AgregarAccionAppModel(this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado.habitaciones, this.modelObject.laberintoSeleccionado.itemsDeLasHabitaciones)).open]
+			onClick [| new AgregarAccionWindow(this, new AgregarAccionAppModel(this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado.itemsDeLasHabitaciones)).open]
 		]
 		
 		new Button(edicionHabitacionButtonPanel) => [

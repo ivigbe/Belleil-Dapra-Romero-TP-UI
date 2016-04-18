@@ -8,6 +8,7 @@ import org.uqbar.commons.utils.Observable
 abstract class Accion {
 	
 	String descripcionAccion
+	Boolean habilitado
 
 	def abstract void realizarAccion()
 }
