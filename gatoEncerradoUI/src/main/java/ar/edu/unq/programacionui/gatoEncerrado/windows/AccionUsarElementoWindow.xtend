@@ -64,7 +64,7 @@ class AccionUsarElementoWindow extends Dialog<AccionUsarElementoAppModel> {
 
 	def agregarAccion() {
 		this.modelObject.habitacionSeleccionada.agregarAccion(this.modelObject.accionDeUsarItem)
-		this.modelObject.darDescripcionDeAccion()
+		this.modelObject.setDescripcionAccion()
 
 		this.accept
 	}

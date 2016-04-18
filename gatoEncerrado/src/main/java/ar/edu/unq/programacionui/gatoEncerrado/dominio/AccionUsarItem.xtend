@@ -13,6 +13,7 @@ class AccionUsarItem extends Accion{
 	new(Item item, Accion accion){
 		itemEsperado = item
 		accionResultante = accion
+		descripcionAccion = "Usar elemento " + itemEsperado.nombre + "para " + accionResultante.descripcionAccion
 	}
 	
 	new() {

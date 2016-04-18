@@ -30,9 +30,10 @@ class AccionDesplazamientoConsecuenteAppModel {
 	
 	def darDescripcionAccion(){
 		
-		this.accionDespl.descripcionAccion = "Ir a Habitacion - " + this.accionDespl.proximaHabitacion.nombreHabitacion
+		//this.accionDespl.descripcionAccion = "Ir a Habitacion - " + this.accionDespl.proximaHabitacion.nombreHabitacion
 		
-		//firePropertyChanged(this,"accionDespl.descripcionAccion")
+		
+		accionDespl.setDescripccionAccion("Ir a Habitacion - " + this.accionDespl.proximaHabitacion.nombreHabitacion)
 	}
 	
 	def agregarAccionResultanteALaOriginal(){

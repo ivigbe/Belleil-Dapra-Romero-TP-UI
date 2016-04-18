@@ -19,5 +19,4 @@ class AccionRecogerItem extends Accion{
 	override realizarAccion() {
 		
 	}
-	
 }

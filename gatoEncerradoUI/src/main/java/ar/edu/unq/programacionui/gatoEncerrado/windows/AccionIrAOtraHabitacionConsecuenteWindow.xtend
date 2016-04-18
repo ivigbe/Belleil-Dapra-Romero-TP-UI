@@ -55,6 +55,7 @@ class AccionIrAOtraHabitacionConsecuenteWindow extends Dialog<AccionDesplazamien
 		this.modelObject.darDescripcionAccion()
 		this.modelObject.agregarAccionResultanteALaOriginal()
 		
+		
 		this.accept
 	}
 	

@@ -26,6 +26,8 @@ class AccionUsarElementoAppModel {
 	}
 
 	def darDescripcionDeAccion() {
+		
+		
 		if(this.accionDeUsarItem.accionResultante == null)
 			return ""
 		else{
@@ -38,4 +40,11 @@ class AccionUsarElementoAppModel {
 
 		this.habitacionSeleccionada.laberinto.habitaciones
 	}
+	
+	def setDescripcionAccion() {
+		
+		accionDeUsarItem.descripcionAccion = "Usar elemento " + accionDeUsarItem.itemEsperado.nombre + "para " + accionDeUsarItem.accionResultante.descripcionAccion
+		
+	}
+	
 }
