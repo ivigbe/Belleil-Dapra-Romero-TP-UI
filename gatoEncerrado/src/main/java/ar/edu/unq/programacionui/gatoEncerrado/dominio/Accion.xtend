@@ -15,9 +15,9 @@ abstract class Accion {
 	
 	def setDescripccionAccion(String desc){
 		
-		this.descripcionAccion = desc	
+		this.descripcionAccion = desc
 		
-		firePropertyChanged(this,"descripcionAccion", desc)
+		firePropertyChanged(this,"descripcionAccion")
 		
 	}
 }

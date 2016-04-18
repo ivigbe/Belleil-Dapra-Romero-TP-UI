@@ -43,7 +43,7 @@ class AccionUsarElementoAppModel {
 	
 	def setDescripcionAccion() {
 		
-		accionDeUsarItem.descripcionAccion = "Usar elemento " + accionDeUsarItem.itemEsperado.nombre + "para " + accionDeUsarItem.accionResultante.descripcionAccion
+		accionDeUsarItem.descripcionAccion = "Usar elemento " + accionDeUsarItem.itemEsperado.nombre + " " + "para " + accionDeUsarItem.accionResultante.descripcionAccion
 		
 	}
 	
