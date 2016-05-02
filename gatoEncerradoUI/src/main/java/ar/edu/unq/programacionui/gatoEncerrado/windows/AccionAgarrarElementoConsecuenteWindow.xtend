@@ -1,6 +1,5 @@
 package ar.edu.unq.programacionui.gatoEncerrado.windows
 
-import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionRecogerItemAppModel
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -11,10 +10,11 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.commons.model.UserException
+import ar.edu.unq.programacionui.gatoEncerrado.appModel.AccionRecogerItemConsecuenteAppModel
 
-class AccionAgarrarElementoWindow extends Dialog<AccionRecogerItemAppModel> {
+class AccionAgarrarElementoConsecuenteWindow extends Dialog<AccionRecogerItemConsecuenteAppModel> {
 
-	new(WindowOwner parent, AccionRecogerItemAppModel model) {
+	new(WindowOwner parent, AccionRecogerItemConsecuenteAppModel model) {
 		super(parent, model)
 		title = "Agregar accion de Agarrar un elemento"
 	}
@@ -23,7 +23,7 @@ class AccionAgarrarElementoWindow extends Dialog<AccionRecogerItemAppModel> {
 
 		new Button(actionsPanel) => [
 			caption = "Aceptar"
-			onClick [|agregarAccionAListaDeAcciones()] 
+			onClick [|agregarAccion()] 
 		]
 
 		new Button(actionsPanel) => [
@@ -52,13 +52,12 @@ class AccionAgarrarElementoWindow extends Dialog<AccionRecogerItemAppModel> {
 		]
 	}
 
-	def agregarAccionAListaDeAcciones() {
+	def agregarAccion() {
 		if(this.modelObject.itemNuevo.nombre == null){
 			throw new UserException("Es obligatorio ingresar un nombre de item")
 		}
-		this.modelObject.habitacionSeleccionada.agregarItem(this.modelObject.itemNuevo)
 		this.modelObject.darDescripcionAccion()
-		this.modelObject.habitacionSeleccionada.agregarAccion(this.modelObject.accionDeRecogerItem)
+		this.modelObject.accionOriginal.accionResultante = this.modelObject.accionDeRecogerItem
 		
 		this.accept
 	}

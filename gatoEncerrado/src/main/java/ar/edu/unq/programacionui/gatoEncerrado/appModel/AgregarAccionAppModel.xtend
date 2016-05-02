@@ -1,9 +1,8 @@
 package ar.edu.unq.programacionui.gatoEncerrado.appModel
 
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Habitacion
-import java.util.List
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Item
-import java.util.ArrayList
+import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 
@@ -17,10 +16,10 @@ class AgregarAccionAppModel {
 	
 	new(){}
 	
-	new(Habitacion habSeleccionada, List<Habitacion> habitaciones, ArrayList<Item> itemsDelLaberinto) {
+	new(Habitacion habSeleccionada, List<Item> itemsDelLaberinto) {
 		
 		this.habitacionSeleccionada = habSeleccionada
-		this.habitaciones = habitaciones
+		this.habitaciones = habitacionSeleccionada.laberinto.habitaciones
 		this.itemsDelLaberinto = itemsDelLaberinto
 	}
 	

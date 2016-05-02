@@ -66,6 +66,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 			
 			(items <=> "admin.laberintos").adapter = new PropertyAdapter(Laberinto, "nombreLaberinto")
 			value <=> "laberintoSeleccionado"
+			height = 70
 		]
 		
 		val laberintosButtonPanel = new Panel(laberintosPanel).layout = new HorizontalLayout()
@@ -100,6 +101,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 			
 			(items <=> "laberintoSeleccionado.habitaciones").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
 			value <=> "habitacionSeleccionada"
+			height = 70
 		]
 		
 		val habitacionesButtonPanel = new Panel(habitacionesPanel).layout = new HorizontalLayout()
@@ -155,6 +157,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 			
 			(items <=> "habitacionSeleccionada.acciones").adapter = new PropertyAdapter(Accion, "descripcionAccion")
 			value <=> "accionSeleccionada"
+			height = 70
 		]
 		
 		val edicionHabitacionButtonPanel = new Panel(edicionHabitacionPanel).layout = new HorizontalLayout()
@@ -162,7 +165,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new Button(edicionHabitacionButtonPanel) => [
 			
 			caption = "Agregar Accion"
-			onClick [| new AgregarAccionWindow(this, new AgregarAccionAppModel(this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado.habitaciones, this.modelObject.laberintoSeleccionado.itemsDeLasHabitaciones)).open]
+			onClick [| new AgregarAccionWindow(this, new AgregarAccionAppModel(this.modelObject.habitacionSeleccionada, this.modelObject.laberintoSeleccionado.itemsDeLasHabitaciones)).open]
 		]
 		
 		new Button(edicionHabitacionButtonPanel) => [

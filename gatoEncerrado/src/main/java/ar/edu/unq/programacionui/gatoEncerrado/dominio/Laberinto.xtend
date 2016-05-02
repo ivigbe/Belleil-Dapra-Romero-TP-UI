@@ -9,7 +9,7 @@ import org.uqbar.commons.model.UserException
 @Observable
 class Laberinto {
 	
-	String nombreLaberinto
+	String nombreLaberinto = ""
 	List<Habitacion> habitaciones = newArrayList()
 	
 	new(){}

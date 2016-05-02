@@ -9,7 +9,9 @@ class AccionDesplazamiento extends Accion{
 	
 	Habitacion proximaHabitacion
 	
-	new(){}
+	new(){
+		
+	}
 	
 	new(Habitacion habitacion){
 		proximaHabitacion = habitacion
@@ -20,5 +22,6 @@ class AccionDesplazamiento extends Accion{
 		
 		
 	}
+
 	
 }
