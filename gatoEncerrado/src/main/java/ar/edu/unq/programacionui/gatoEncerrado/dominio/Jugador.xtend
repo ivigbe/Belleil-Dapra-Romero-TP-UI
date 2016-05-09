@@ -19,6 +19,12 @@ class Jugador {
 		habitacionActual = actual
 	}
 	
+	new(Integer idUsuario){
+		
+		this.idUsuario = idUsuario
+		inventario = new ArrayList<Item>(15)
+	}
+	
 	def recogerItem(AccionRecogerItem accionItem) {
 		inventario.add(accionItem.itemARecoger)
 		habitacionActual.removerAccion(accionItem)

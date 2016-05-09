@@ -9,7 +9,7 @@ class LaberintoMinificado {
 	String nombreLaberinto
 	Integer idLaberinto
 	String pathImagenLaberinto
-	List<Habitacion> habitaciones
+	List<HabitacionMinificada> habitaciones
 	ArrayList<Item> inventarioDelJugador
 	
 	new(String nombre, Integer id, String path){
@@ -18,7 +18,7 @@ class LaberintoMinificado {
 		pathImagenLaberinto = path
 	}
 	
-	new(Integer id, List<Habitacion> hs, ArrayList<Item> inventario){
+	new(Integer id, List<HabitacionMinificada> hs, ArrayList<Item> inventario){
 		
 		idLaberinto = id
 		habitaciones = hs

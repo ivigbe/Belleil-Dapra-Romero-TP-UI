@@ -8,6 +8,7 @@ import ar.edu.unq.programacionui.gatoEncerrado.dominio.Administrador
 import org.uqbar.xtrest.api.XTRest
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.LaberintosFactory
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.DatosLaberintoFactory
 
 @Accessors
 @Controller
@@ -15,25 +16,30 @@ class LaberintoController {
 	
 	Administrador admin
 	LaberintosFactory factory
+	DatosLaberintoFactory datosLaberinto
 	Laberinto inicial
 	
 	new(){
 		admin = new Administrador("Juan")
 		factory = new LaberintosFactory(admin.laberintos)
+		datosLaberinto = new DatosLaberintoFactory(admin.laberintos)
 	}
 	
 	extension JSONUtils = new JSONUtils
 	
 	@Get("/laberintos")
-	def obtenerLaberintos(Integer idUsuario){
+	def obtenerLaberintos(String idUsuario){
 		var laberintos = factory.minificarLaberintos
 		ok(laberintos.toJson)
 	}
 	
-	@Get("iniciarLaberinto")
-	def iniciarLaberinto(Integer idUsuario, Integer idLaberinto){
+	@Get("/iniciarLaberinto")
+	def iniciarLaberinto(String idUsuario, String idLaberinto){
 		
-		
+		datosLaberinto.jugadorActual = admin.obtenerJugador(Integer.parseInt(idUsuario))
+		var laberinto = admin.obtenerLaberinto(Integer.parseInt(idLaberinto))
+		var res = datosLaberinto.minificar(laberinto)
+		ok(res.toJson)
 	}
 	
 	def static void main(String[] args) {
