@@ -11,11 +11,13 @@ import static org.uqbar.commons.model.ObservableUtils.*
 class Habitacion {
 	
 	String nombreHabitacion
+	Integer idHabitacion
 	List<Accion> acciones = newArrayList()
 	List<Item> items = newArrayList()
 	Boolean esHabitacionInicial
 	Boolean esHabitacionFinal
 	Laberinto laberinto
+	String pathImgHabitacion = "unPath"
 	
 	new(){
 		

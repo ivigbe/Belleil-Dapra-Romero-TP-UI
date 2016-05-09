@@ -26,7 +26,7 @@ class IndexAdministradorAppModel{
 	}
 	
 	def void nuevoLaberinto(){
-		var laberintoNuevo = new Laberinto("nuevo Laberinto")
+		var laberintoNuevo = new Laberinto("nuevo Laberinto", 1, "")
 		this.laberintoSeleccionado = laberintoNuevo
 		
 		var habitacionNueva = new Habitacion("nueva Habitacion", laberintoNuevo)

@@ -11,6 +11,7 @@ class Jugador {
 	Habitacion habitacionActual
 	List<Laberinto> laberintosSuperados = newArrayList()
 	List<Laberinto> laberintosAbandonados = newArrayList()
+	Integer idUsuario
 	
 	new(Habitacion actual){
 		

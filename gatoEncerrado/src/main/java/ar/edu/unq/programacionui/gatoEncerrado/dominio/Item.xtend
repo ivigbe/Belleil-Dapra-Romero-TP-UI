@@ -9,6 +9,7 @@ import static org.uqbar.commons.model.ObservableUtils.*
 @Observable
 class Item {
 	
+	String idItem
 	String nombre
 	String descripcion
 	

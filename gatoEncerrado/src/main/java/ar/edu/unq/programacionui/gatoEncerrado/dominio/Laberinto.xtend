@@ -11,11 +11,19 @@ class Laberinto {
 	
 	String nombreLaberinto = ""
 	List<Habitacion> habitaciones = newArrayList()
+	String pathImgLaberinto = "ruta a carpeta contenedora de imagenes"
+	Integer idLaberinto = 0
+	Jugador jugadorActual
 	
-	new(){}
+	new(){
+		
+	}
 	
-	new(String nombreLaberinto){
+	new(String nombreLaberinto, Integer id, String nombreDeImagen){
 		this.nombreLaberinto = nombreLaberinto
+		idLaberinto = id
+		pathImgLaberinto += nombreDeImagen
+		
 	}
 	
 	def void agregarHabitacion(Habitacion habitacion) {
@@ -75,4 +83,6 @@ class Laberinto {
 		}
 		return false
 	}
+	
+	
 }
