@@ -25,8 +25,9 @@ class Habitacion {
 		this.esHabitacionFinal = false
 	}
 	
-	new(String nombreHabitacion, Laberinto laberinto){
+	new(Integer id, String nombreHabitacion, Laberinto laberinto){
 		
+		this.idHabitacion = id
 		this.nombreHabitacion = nombreHabitacion
 		this.esHabitacionInicial = false
 		this.esHabitacionFinal = false
@@ -53,7 +54,7 @@ class Habitacion {
 	
 	def marcarComoFinal() {
 		esHabitacionFinal = true
-		agregarAccion(new AccionSalirLaberinto())
+		agregarAccion(new AccionGanarLaberinto(0, this))
 	}
 	
 	def setEsHabitacionInicial(Boolean b){

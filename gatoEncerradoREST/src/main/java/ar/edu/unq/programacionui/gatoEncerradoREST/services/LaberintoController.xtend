@@ -22,7 +22,7 @@ class LaberintoController {
 	new(){
 		admin = new Administrador("Juan")
 		factory = new LaberintosFactory(admin.laberintos)
-		datosLaberinto = new DatosLaberintoFactory(admin.laberintos)
+		datosLaberinto = new DatosLaberintoFactory()
 	}
 	
 	extension JSONUtils = new JSONUtils
@@ -40,6 +40,16 @@ class LaberintoController {
 		var laberinto = admin.obtenerLaberinto(Integer.parseInt(idLaberinto))
 		var res = datosLaberinto.minificar(laberinto)
 		ok(res.toJson)
+	}
+	
+	@Get("/realizarAccion")
+	def realizarAccion(String idHabitacion, String idAccion){
+		
+		var habitacion = admin.obtenerHabitacion(Integer.parseInt(idHabitacion))
+		var accion = admin.obtenerAccionAEjecutar(Integer.parseInt(idAccion))
+		
+		accion.realizarAccion()
+		ok(accion.generarResultado().toJson)
 	}
 	
 	def static void main(String[] args) {

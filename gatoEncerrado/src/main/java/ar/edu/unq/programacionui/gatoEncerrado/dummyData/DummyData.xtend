@@ -24,7 +24,7 @@ class DummyData {
 	
 	def crearAccionDummy(Habitacion prox){
 		
-		new AccionDesplazamiento(prox)
+		new AccionDesplazamiento(1,prox,prox)
 	}
 	
 	def crearHabitacionDummy(String nombre, Laberinto l){

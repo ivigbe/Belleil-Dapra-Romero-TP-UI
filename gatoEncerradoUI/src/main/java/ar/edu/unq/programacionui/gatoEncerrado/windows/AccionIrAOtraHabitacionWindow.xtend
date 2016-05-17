@@ -47,7 +47,7 @@ class AccionIrAOtraHabitacionWindow extends Dialog<AccionDesplazamientoAppModel>
 			
 			(items <=> "habitacionesDesplazamiento").adapter = new PropertyAdapter(Habitacion, "nombreHabitacion")
 			value <=> "accionDespl.proximaHabitacion"
-		]
+		] //SELECTOR
 	}
 	
 	def agregarAccionAListadoDeAcciones() {

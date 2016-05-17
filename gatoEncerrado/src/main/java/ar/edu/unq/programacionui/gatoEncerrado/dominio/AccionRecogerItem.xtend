@@ -9,14 +9,19 @@ class AccionRecogerItem extends Accion{
 	
 	Item itemARecoger
 	
-	new(){}
-	
-	new(Item item){
+	new(Integer id, Habitacion actual, Item item){
+		super(id, actual)
 		itemARecoger = item
 		this.descripcionAccion = "Item a recoger: " + itemARecoger.nombre
 	}
 	
 	override realizarAccion() {
+		habitacion.laberinto.jugadorActual.recogerItem(this)
 		
+	}
+	
+	override generarResultado(){
+		
+		itemARecoger
 	}
 }

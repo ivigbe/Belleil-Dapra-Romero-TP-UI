@@ -61,13 +61,13 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		val laberintosPanel = new Panel(mainPanel)
 		laberintosPanel.layout = new VerticalLayout()
 		
-		new Label(laberintosPanel).text = "Laberintos"
+		new Label(laberintosPanel).text = "Laberintos" //LABEL
 		new List(laberintosPanel) => [
 			
 			(items <=> "admin.laberintos").adapter = new PropertyAdapter(Laberinto, "nombreLaberinto")
 			value <=> "laberintoSeleccionado"
 			height = 70
-		]
+		]  //LIST
 		
 		val laberintosButtonPanel = new Panel(laberintosPanel).layout = new HorizontalLayout()
 		
@@ -75,7 +75,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 			
 			caption = "Agregar Laberinto"
 			onClick [| this.modelObject.nuevoLaberinto]
-		]
+		]//BUTTON
 		
 		new Button(laberintosButtonPanel) => [
 			
@@ -95,7 +95,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		new TextBox(habitacionesPanel) => [
 			
 			value <=> "laberintoSeleccionado.nombreLaberinto"
-		]
+		]//TEXT BOX
 		
 		new List(habitacionesPanel) => [
 			
@@ -137,8 +137,8 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 	
 		new CheckBox(esInicialPanel) => [
 			
-			value <=> "habitacionSeleccionada.esHabitacionInicial"
-			]
+			(value <=> "habitacionSeleccionada.esHabitacionInicial").transformer = new NullToBooleanTransformer()
+			] //CHECKBOX
 		
 			
 		new Label(esInicialPanel).text = "Es Inicial?"
@@ -147,7 +147,7 @@ class AdministradorWindow extends SimpleWindow<IndexAdministradorAppModel>{
 		
 		new CheckBox(esFinalPanel) => [
 			
-			value <=> "habitacionSeleccionada.esHabitacionFinal"
+			(value <=> "habitacionSeleccionada.esHabitacionFinal").transformer = new NullToBooleanTransformer()
 		]
 		new Label(esFinalPanel).text = "Es Final?"
 		

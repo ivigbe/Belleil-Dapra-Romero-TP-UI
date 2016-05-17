@@ -10,17 +10,19 @@ class AccionUsarItem extends Accion{
 	Item itemEsperado
 	Accion accionResultante
 	
-	new(Item item, Accion accion){
+	new(Integer id, Habitacion habitacion, Item item, Accion accion){
+		super(id, habitacion)
 		itemEsperado = item
 		accionResultante = accion
 		descripcionAccion = "Usar elemento " + itemEsperado.nombre + "para " + accionResultante.descripcionAccion
 	}
 	
-	new() {
+	override realizarAccion() {
+		habitacion.laberinto.jugadorActual.usarItem(this)
 	}
 	
-	override realizarAccion() {
-		
+	override generarResultado() {
+		accionResultante
 	}
 	
 }

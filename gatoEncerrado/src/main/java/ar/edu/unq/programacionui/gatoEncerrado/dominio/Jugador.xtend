@@ -19,10 +19,11 @@ class Jugador {
 		habitacionActual = actual
 	}
 	
-	new(Integer idUsuario){
+	new(Integer idUsuario, Habitacion actual){
 		
 		this.idUsuario = idUsuario
 		inventario = new ArrayList<Item>(15)
+		habitacionActual = actual
 	}
 	
 	def recogerItem(AccionRecogerItem accionItem) {
@@ -40,8 +41,8 @@ class Jugador {
 		habitacionAnterior.removerAccion(accionHabitacion)
 	}
 	
-	def usarItem(Item itemAUsar, AccionUsarItem accion) {
-		if(itemAUsar.nombre == accion.itemEsperado){
+	def usarItem(AccionUsarItem accion) {
+		if(this.estaEnElInventario(accion.itemEsperado)){
 			habitacionActual.agregarAccion(accion.accionResultante)
 			habitacionActual.removerAccion(accion)
 		}
@@ -51,10 +52,24 @@ class Jugador {
 		
 	}
 	
-	def void abandonarLaberinto(){
-		//TODO: VER DESPUES!
+	def estaEnElInventario(Item item) {
+		inventario.exists[i | i.nombre == item.nombre]
 	}
 	
+	def void abandonarLaberinto(){
+		throw new LaberintoAbandonadoException()
+	}
+	
+	def laberintoSuperado() {
+		this.laberintosSuperados.add(habitacionActual.laberinto)
+	}
+	
+}
+
+class LaberintoAbandonadoException extends Exception{
+	new(){
+		super("Juego Terminado!")
+	}
 }
 
 class ItemNoEncontradoException extends Exception{

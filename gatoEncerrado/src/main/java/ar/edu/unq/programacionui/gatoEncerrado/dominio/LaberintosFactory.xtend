@@ -4,6 +4,12 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
+abstract class Factory {
+	
+	
+}
+
+@Accessors
 class LaberintosFactory {
 	List<Laberinto> laberintosAMinificar
 	
@@ -53,24 +59,12 @@ class HabitacionFactory{
 @Accessors
 class DatosLaberintoFactory {
 	
-	List<Laberinto> laberintos
 	Jugador jugadorActual
 	
-	new(List<Laberinto> ls){
-		
-		laberintos = ls
-	}
-	
-	def minificarLaberintos(){
-		var laberintosMinificados = newArrayList()
-		for(l:laberintos){
-			laberintosMinificados.add(minificar(l))
-		}
-		return laberintosMinificados
-	}
+	new(){}
 	
 	def minificar(Laberinto laberinto) {
 		
-		return new LaberintoMinificado(laberinto.idLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones, jugadorActual.inventario)
+		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones, jugadorActual.inventario)
 	}
 }

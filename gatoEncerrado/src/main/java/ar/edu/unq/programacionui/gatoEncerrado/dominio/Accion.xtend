@@ -10,8 +10,16 @@ abstract class Accion {
 	
 	String descripcionAccion
 	Boolean habilitado
+	Habitacion habitacion
+	Integer idAccion
+	
+	new(Integer id, Habitacion habitacion){
+		this.idAccion = id
+		this.habitacion = habitacion
+	}
 
 	def abstract void realizarAccion()
+	def abstract Object generarResultado()
 	
 	def setDescripccionAccion(String desc){
 		

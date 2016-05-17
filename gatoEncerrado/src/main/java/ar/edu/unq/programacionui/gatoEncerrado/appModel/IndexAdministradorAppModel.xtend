@@ -29,7 +29,7 @@ class IndexAdministradorAppModel{
 		var laberintoNuevo = new Laberinto("nuevo Laberinto", 1, "")
 		this.laberintoSeleccionado = laberintoNuevo
 		
-		var habitacionNueva = new Habitacion("nueva Habitacion", laberintoNuevo)
+		var habitacionNueva = new Habitacion(1, "nueva Habitacion", laberintoNuevo)
 		this.habitacionSeleccionada = habitacionNueva
 		
 		laberintoNuevo.agregarHabitacion(habitacionNueva)
@@ -38,7 +38,7 @@ class IndexAdministradorAppModel{
 	
 	def void nuevaHabitacion(){
 		
-		laberintoSeleccionado.agregarHabitacion(new Habitacion("nueva Habitacion", laberintoSeleccionado))
+		laberintoSeleccionado.agregarHabitacion(new Habitacion(1, "nueva Habitacion", laberintoSeleccionado))
 	}
 	
 	def void quitarHabitacion(Habitacion h){

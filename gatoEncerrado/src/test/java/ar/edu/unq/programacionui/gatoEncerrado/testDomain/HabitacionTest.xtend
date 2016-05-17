@@ -19,9 +19,9 @@ class HabitacionTest {
 	@Before
 	def void setUp(){
 		habitacion = new Habitacion()
-		abrirPuerta = new AccionDesplazamiento()
-		agarrarPala = new AccionRecogerItem()
-		agarrarLlaveMagica = new AccionRecogerItem()
+		abrirPuerta = new AccionDesplazamiento(1, habitacion, habitacion)
+		//agarrarPala = new AccionRecogerItem(2)
+		//agarrarLlaveMagica = new AccionRecogerItem()
 		
 	}
 	

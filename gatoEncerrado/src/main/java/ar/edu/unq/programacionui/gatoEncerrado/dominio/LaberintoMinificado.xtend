@@ -18,8 +18,8 @@ class LaberintoMinificado {
 		pathImagenLaberinto = path
 	}
 	
-	new(Integer id, List<HabitacionMinificada> hs, ArrayList<Item> inventario){
-		
+	new(Integer id, String nombre, List<HabitacionMinificada> hs, ArrayList<Item> inventario){
+		nombreLaberinto = nombre
 		idLaberinto = id
 		habitaciones = hs
 		inventarioDelJugador = inventario
