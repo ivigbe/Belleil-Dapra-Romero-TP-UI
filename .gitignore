@@ -1,9 +1,9 @@
 .settings
 .classpath
 .project
+xtend-gen
 generated-sources
 target
-node-modules/*
-node-modules
+node_modules
 
 

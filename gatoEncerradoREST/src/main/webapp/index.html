@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gatoEncerradoApp">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Home</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/aditionalStyle.css">
+
+    <script type="text/javascript" href="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" href="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" href="node_modules/angular-animate/angular-animate.min.js"></script>
+</head>
+<body ng-controller="gatoEncerradoCtrl as Ctrl">
+	
+	<nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="img/logo.jpg" width=50px height=40px></a>
+            </div>
+            <div class="navbar-collapse collapse">
+            	<ul class="navbar navbar-right list-unstyled">
+            		<li>
+            			<h3><label class="label label-default">Hola {{Ctrl.jugador.nombre}}!</label></h3>
+            		</li>
+                </ul>
+            </div>
+        </div>
+	</nav>
+
+	<header class="jumbotron jumbotron-fluid">
+        <div class="container-fluid">
+            <div class="row row-header">
+            	<div class="col-sm-4">
+            		<img src="img/gatoEncerrado.jpg" alt="GatoEncerrado" class="img-responsive" width="80px" height="80px">
+            	</div>
+            	<div class="col-sm-5 col-sm-pull-3">
+            		<h1>Acá hay Gato Encerrado!</h1>
+            	</div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="panel panel-default">
+            <div class="container-fluid">
+                <div class="panel-body">
+                    <div class="col-sm-12">
+                        <h1>Selecciona un Laberinto</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+    	<article class="row row-content">
+    		<div class="col-xs-12 col-sm-6">
+                <div class="panel-group" ng-repeat="l in Ctrl.laberintos" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" role="tab" id="headingLaberinto1">
+                            <h3 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#descripcionLaberinto1" aria-expanded="true" aria-controls="descripcionLaberinto1">Laberinto 1</a>
+                            </h3>
+                        </div>
+                        <div role="tabpanel" class="panel-collapse collapse in" id="descripcionLaberinto1" aria-labelledby="headingLaberinto1">
+                            <div class="panel-body">
+                                <img class="img-thumbnail img-responsive" src="img/laberinto1.jpg" alt="Imagen Laberinto" width="250" height="188">
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra mi nec condimentum ullamcorper. Donec in rutrum neque, et viverra purus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" role="tab" id="headingLaberinto2">
+                            <h3 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#descripcionLaberinto2" aria-expanded="false" aria-controls="descripcionLaberinto2">Laberinto 2</a>
+                            </h3>
+                        </div>
+                        <div role="tabpanel" class="panel-collapse collapse" id="descripcionLaberinto2" aria-labelledby="headingLaberinto2">
+                            <div class="panel-body">
+                                <img class="img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="Imagen Laberinto">
+                                <p class="lead">Phasellus nisi ipsum, ornare non luctus id, molestie sit amet mauris. Mauris nec mi volutpat, tincidunt sem ut, dignissim diam. In et risus nec est pulvinar blandit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    		<div class="col-xs-12 col-sm-6">
+                <h1>Laberinto Seleccionado:</h1>
+                <div class="container">
+                    <div class="row row-content">
+                        <div class="col-sm-12">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <img class="media-object img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="ImgLaberinto">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h2 class="media-heading">Laberinto 2</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra mi nec condimentum ullamcorper. Donec in rutrum neque, et viverra purus. Cras non magna mi. Donec tristique justo id bibendum faucibus. Sed est sem, malesuada ac porta vitae, porta eget tortor. Sed quis congue augue. Mauris vehicula justo arcu, sit amet maximus odio posuere at. Donec malesuada ac quam eget sagittis. Aenean sagittis lacus diam, ac commodo tellus commodo vitae. Vivamus non augue est. Nulla in purus iaculis, tincidunt ligula quis, vulputate nulla.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+    	</article>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="text-center">Construccion de Interfaces de Usuario 2016</p>
+                    <p class="text-center">Grupo 2: Ivan Belleil, Sebastian Daprá, Emiliano Romero</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+</body>
+</html>
