@@ -27,8 +27,15 @@ class Jugador {
 	}
 	
 	def recogerItem(AccionRecogerItem accionItem) {
-		inventario.add(accionItem.itemARecoger)
-		habitacionActual.removerAccion(accionItem)
+		if(inventario.indexOf(inventario.last()) < 15){
+			
+			inventario.add(accionItem.itemARecoger)
+			habitacionActual.removerAccion(accionItem)	
+		}
+		else{
+			
+			throw new InventarioLlenoException()
+		}
 	}
 	
 	def cantidadDeItems() {
@@ -75,4 +82,10 @@ class LaberintoAbandonadoException extends Exception{
 class ItemNoEncontradoException extends Exception{
 	new(){
 	super("No tienes el item esperado!")}
+}
+
+class InventarioLlenoException extends Exception{
+	new(){
+		super("El inventario esta lleno!")
+	}
 }

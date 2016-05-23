@@ -45,11 +45,10 @@ class LaberintoController {
 	@Get("/realizarAccion")
 	def realizarAccion(String idHabitacion, String idAccion, String idUsuario){
 		
-		var habitacion = admin.obtenerHabitacion(Integer.parseInt(idHabitacion))
 		var accion = admin.obtenerAccionAEjecutar(Integer.parseInt(idAccion))
 		
 		accion.realizarAccion()
-		ok(accion.generarResultado().toJson)
+		ok(accion.generarResultado(Integer.parseInt(idUsuario)).toJson)
 	}
 	
 	def static void main(String[] args) {

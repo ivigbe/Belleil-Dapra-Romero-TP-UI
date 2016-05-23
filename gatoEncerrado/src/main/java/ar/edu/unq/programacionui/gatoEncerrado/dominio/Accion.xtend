@@ -19,7 +19,7 @@ abstract class Accion {
 	}
 
 	def abstract void realizarAccion()
-	def abstract Object generarResultado()
+	def abstract Object generarResultado(Integer idUsuario)
 	
 	def setDescripccionAccion(String desc){
 		

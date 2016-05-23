@@ -21,8 +21,8 @@ class AccionUsarItem extends Accion{
 		habitacion.laberinto.jugadorActual.usarItem(this)
 	}
 	
-	override generarResultado() {
-		accionResultante
+	override generarResultado(Integer idUsuario) {
+		new ResultadoAccionUsarItem(accionResultante, idUsuario)
 	}
 	
 }

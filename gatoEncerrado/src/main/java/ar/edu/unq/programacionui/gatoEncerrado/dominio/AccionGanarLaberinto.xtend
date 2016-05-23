@@ -16,7 +16,7 @@ class AccionGanarLaberinto extends Accion{
 			habitacion.laberinto.jugadorActual.laberintoSuperado()
 	}
 	
-	override generarResultado() {
+	override generarResultado(Integer idUsuario) {
 		"Ganaste!"
 	}
 	

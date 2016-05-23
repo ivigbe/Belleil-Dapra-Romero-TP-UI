@@ -20,8 +20,8 @@ class AccionRecogerItem extends Accion{
 		
 	}
 	
-	override generarResultado(){
+	override generarResultado(Integer idUsuario){
 		
-		itemARecoger
+		new ResultadoAccionRecogerItem(itemARecoger, idUsuario)
 	}
 }

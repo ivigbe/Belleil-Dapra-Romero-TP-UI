@@ -20,8 +20,8 @@ class AccionDesplazamiento extends Accion{
 		
 	}
 
-	override generarResultado(){
+	override generarResultado(Integer idUsuario){
 		
-		proximaHabitacion
+		new ResultadoAccionDesplazamiento(idUsuario, proximaHabitacion)
 	}
 }
