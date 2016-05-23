@@ -43,7 +43,7 @@ class LaberintoController {
 	}
 	
 	@Get("/realizarAccion")
-	def realizarAccion(String idHabitacion, String idAccion){
+	def realizarAccion(String idHabitacion, String idAccion, String idUsuario){
 		
 		var habitacion = admin.obtenerHabitacion(Integer.parseInt(idHabitacion))
 		var accion = admin.obtenerAccionAEjecutar(Integer.parseInt(idAccion))

@@ -11,25 +11,26 @@
 
 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/aditionalStyle.css">
 
-    <script type="text/javascript" href="node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" href="node_modules/angular-resource/angular-resource.min.js"></script>
-    <script type="text/javascript" href="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
 </head>
-<body ng-controller="gatoEncerradoCtrl as Ctrl">
+<body ng-controller="GatoEncerradoCtrl as Ctrl">
 	
-	<nav class="navbar navbar-inverse" role="navigation">
+	<nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img src="img/logo.jpg" width=50px height=40px></a>
+                <a class="navbar-brand" href="#"><img class="media-object img-thumbnail img-responsive" src="img/logo.jpg" width=50px height=40px></a>
             </div>
             <div class="navbar-collapse collapse">
             	<ul class="navbar navbar-right list-unstyled">
             		<li>
-            			<h3><label class="label label-default">Hola {{Ctrl.jugador.nombre}}!</label></h3>
+            			<h3><label class="label label-default">Hola Jugador!</label></h3>
             		</li>
                 </ul>
             </div>
@@ -63,57 +64,47 @@
 
     <section class="container">
     	<article class="row row-content">
-    		<div class="col-xs-12 col-sm-6">
-                <div class="panel-group" ng-repeat="l in Ctrl.laberintos" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" role="tab" id="headingLaberinto1">
-                            <h3 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#descripcionLaberinto1" aria-expanded="true" aria-controls="descripcionLaberinto1">Laberinto 1</a>
-                            </h3>
-                        </div>
-                        <div role="tabpanel" class="panel-collapse collapse in" id="descripcionLaberinto1" aria-labelledby="headingLaberinto1">
-                            <div class="panel-body">
-                                <img class="img-thumbnail img-responsive" src="img/laberinto1.jpg" alt="Imagen Laberinto" width="250" height="188">
-                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra mi nec condimentum ullamcorper. Donec in rutrum neque, et viverra purus.</p>
+    		<div class="col-xs-12">
+                <uib-accordion close-others="true">
+                  <uib-accordion-group ng-repeat="l in laberintos" is-open="isOpen">
+                      <uib-accordion-heading>
+                        <a ng-click="setSeleccionado(l.idLaberinto)" href="#">{{l.nombreLaberinto}}</a>
+                      </uib-accordion-heading>
+                      <div class="media">
+                          <div class="media-left media-middle">
+                                <img class="media-object img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="ImgLaberinto">
+                            </div>
+                            <div class="media-body">
+                                <h2 class="media-heading">{{l.nombreLaberinto}}</h2>
+                                <p>Phasellus nisi ipsum, ornare non luctus id, molestie sit amet mauris. Mauris nec mi volutpat, tincidunt sem ut, dignissim diam. In et risus nec est pulvinar blandit.</p>
+                                <div class="media-left">
+                                    <button class="btn btn-primary">Jugar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" role="tab" id="headingLaberinto2">
-                            <h3 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#descripcionLaberinto2" aria-expanded="false" aria-controls="descripcionLaberinto2">Laberinto 2</a>
-                            </h3>
-                        </div>
-                        <div role="tabpanel" class="panel-collapse collapse" id="descripcionLaberinto2" aria-labelledby="headingLaberinto2">
-                            <div class="panel-body">
-                                <img class="img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="Imagen Laberinto">
-                                <p class="lead">Phasellus nisi ipsum, ornare non luctus id, molestie sit amet mauris. Mauris nec mi volutpat, tincidunt sem ut, dignissim diam. In et risus nec est pulvinar blandit.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  </uib-accordion-group>
+              </uib-accordion>
             </div>
-
-    		<div class="col-xs-12 col-sm-6">
-                <h1>Laberinto Seleccionado:</h1>
-                <div class="container">
-                    <div class="row row-content">
-                        <div class="col-sm-12">
-                            <div class="media">
-                                <div class="media-left media-middle">
-                                    <a href="#">
-                                        <img class="media-object img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="ImgLaberinto">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h2 class="media-heading">Laberinto 2</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra mi nec condimentum ullamcorper. Donec in rutrum neque, et viverra purus. Cras non magna mi. Donec tristique justo id bibendum faucibus. Sed est sem, malesuada ac porta vitae, porta eget tortor. Sed quis congue augue. Mauris vehicula justo arcu, sit amet maximus odio posuere at. Donec malesuada ac quam eget sagittis. Aenean sagittis lacus diam, ac commodo tellus commodo vitae. Vivamus non augue est. Nulla in purus iaculis, tincidunt ligula quis, vulputate nulla.</p>
+    		<!-- <div class="col-xs-12 col-sm-6" ng-repeat="l in laberintos" ng-show="seleccionado">
+                            <h1>Laberinto Seleccionado:</h1>
+                            <div class="container">
+                                <div class="row row-content">
+                                    <div class="col-sm-12">
+                                        <div class="media">
+                                            <div class="media-left media-middle">
+                                                <a href="#">
+                                                    <img class="media-object img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="ImgLaberinto">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h2 class="media-heading">{{l.nombreLaberinto}}</h2>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra mi nec condimentum ullamcorper. Donec in rutrum neque, et viverra purus. Cras non magna mi. Donec tristique justo id bibendum faucibus. Sed est sem, malesuada ac porta vitae, porta eget tortor. Sed quis congue augue. Mauris vehicula justo arcu, sit amet maximus odio posuere at. Donec malesuada ac quam eget sagittis. Aenean sagittis lacus diam, ac commodo tellus commodo vitae. Vivamus non augue est. Nulla in purus iaculis, tincidunt ligula quis, vulputate nulla.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-    		</div>
+            </div> -->
     	</article>
     </section>
 
@@ -127,7 +118,6 @@
             </div>
         </div>
     </footer>
-
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
 </body>
