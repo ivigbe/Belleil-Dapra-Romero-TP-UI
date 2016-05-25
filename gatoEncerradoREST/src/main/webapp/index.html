@@ -12,20 +12,26 @@
 	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/aditionalStyle.css">
-
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
+
     <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+    
+    <script src="node_modules/angular-loading-bar/build/loading-bar.min.js"></script>
+    <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.min.css"/>
+
+    <link rel="stylesheet" href="css/aditionalStyle.css">
+
 </head>
 <body ng-controller="GatoEncerradoCtrl as Ctrl">
 	
 	<nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img class="media-object img-thumbnail img-responsive" src="img/garfieldEncerrado.jpg" width=55px height=65px></a>
+                <a class="navbar-brand" href="#"><img class="media-object img-thumbnail img-responsive" src="img/garfieldEncerrado.jpg" width=80px height=65px></a>
             </div>
             <div class="navbar-collapse collapse">
             	<ul class="navbar navbar-right list-unstyled">
@@ -39,7 +45,7 @@
 
 	<header class="jumbotron jumbotron-fluid">
         <div class="container-fluid">
-            <div class="row row-header">
+            <div class="page-header">
             	<div class="col-sm-4">
             		<img src="img/gatoEncerrado.jpg" alt="GatoEncerrado" class="img-responsive" width="80px" height="80px">
             	</div>
@@ -49,6 +55,12 @@
             </div>
         </div>
     </header>
+
+    <div class="row">
+        <ul class="example-animate-container">
+            <li class="message bg-success animate-repeat" ng-repeat="msg in msgs">{{msg}}</li>
+        </ul>
+    </div>
 
     <section>
         <div class="panel panel-default">
@@ -68,11 +80,11 @@
                 <uib-accordion close-others="true">
                   <uib-accordion-group ng-repeat="l in laberintos" is-open="isOpen">
                       <uib-accordion-heading>
-                        <a ng-click="setSeleccionado(l.idLaberinto)" href="#">{{l.nombreLaberinto}}</a>
+                        <a ng-click="seleccionarLaberinto(l)" href="#">{{l.nombreLaberinto}}</a>
                       </uib-accordion-heading>
                       <div class="media">
                           <div class="media-left media-middle">
-                                <img class="media-object img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="ImgLaberinto">
+                                <img class="media-object img-thumbnail img-responsive" src={{l.pathImagenLaberinto}} alt="ImgLaberinto">
                             </div>
                             <div class="media-body">
                                 <h2 class="media-heading">{{l.nombreLaberinto}}</h2>
@@ -85,25 +97,23 @@
                   </uib-accordion-group>
               </uib-accordion>
             </div>
-    		<div class="col-xs-12 col-md-6" ng-if="laberintoSeleccionado">
-                            <h1>Laberinto Saeleccionado:</h1>
-                            <div class="container">
-                                <div class="row row-content">
-                                    <div class="col-sm-12">
-                                        <div class="media">
-                                            <div class="media-left media-middle">
-                                                <a href="#">
-                                                    <img class="media-object img-thumbnail img-responsive" src="img/laberinto2.jpg" alt="ImgLaberinto">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h2 class="media-heading">{{l.nombreLaberinto}}</h2>
-                                                <p{{laberintoselecciona.descripcion}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+    		<div ng-if="laberintoSeleccionado" class="col-xs-12 col-md-6 example-animate-container">
+                <h1>Laberinto Seleccionado:</h1>
+                <div class="container">
+                    <div class="row row-content">
+                        <div class="col-sm-12">
+                            <div class="media">
+                                <div class="media-left media-middle">
+                                    <img class="media-object img-thumbnail img-responsive" src={{laberintoSeleccionado.pathImagenLaberinto}} alt="ImgLaberinto">
+                                </div>
+                                <div class="media-body">
+                                    <h2 class="media-heading">{{laberintoSeleccionado.nombreLaberinto}}</h2>
+                                    <p class="lead">{{laberintoSeleccionado.descripcionLaberinto}}</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
             </div>
     	</article>
     </section>

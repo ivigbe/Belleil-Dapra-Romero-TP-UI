@@ -1,1 +1,1 @@
-var app = angular.module('gatoEncerradoApp', ['ui.bootstrap']);
+var app = angular.module('gatoEncerradoApp', ['ui.bootstrap', 'ngAnimate', 'ngResource', 'chieffancypants.loadingBar']);
