@@ -4,13 +4,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-abstract class Factory {
-	
-	
-}
-
-@Accessors
-class LaberintosFactory {
+class Factory {
 	List<Laberinto> laberintosAMinificar
 	
 	new(List<Laberinto> laberintos){
@@ -28,7 +22,7 @@ class LaberintosFactory {
 	}
 	
 	def minificar(Laberinto laberinto) {
-		return new LaberintoMinificado(laberinto.nombreLaberinto, laberinto.idLaberinto, laberinto.pathImgLaberinto)
+		return new LaberintoMinificado(laberinto.nombreLaberinto, laberinto.idLaberinto, laberinto.pathImgLaberinto, laberinto.descripcion)
 	}
 	
 }

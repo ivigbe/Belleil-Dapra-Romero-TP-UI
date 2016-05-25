@@ -11,8 +11,9 @@ class Laberinto {
 	
 	String nombreLaberinto = ""
 	List<Habitacion> habitaciones = newArrayList()
-	String pathImgLaberinto = "ruta a carpeta contenedora de imagenes"
+	String pathImgLaberinto = "img/"
 	Integer idLaberinto = 0
+	String descripcion = ""
 	Jugador jugadorActual
 	
 	new(){

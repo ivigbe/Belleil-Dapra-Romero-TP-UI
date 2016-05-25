@@ -9,13 +9,15 @@ class LaberintoMinificado {
 	String nombreLaberinto
 	Integer idLaberinto
 	String pathImagenLaberinto
-	List<HabitacionMinificada> habitaciones
-	ArrayList<Item> inventarioDelJugador
+	String descripcionLaberinto
+	List<HabitacionMinificada> habitaciones = newArrayList()
+	ArrayList<Item> inventarioDelJugador = new ArrayList<Item>(15)
 	
-	new(String nombre, Integer id, String path){
+	new(String nombre, Integer id, String path, String desc){
 		nombreLaberinto = nombre
 		idLaberinto = id
 		pathImagenLaberinto = path
+		descripcionLaberinto = desc
 	}
 	
 	new(Integer id, String nombre, List<HabitacionMinificada> hs, ArrayList<Item> inventario){

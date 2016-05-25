@@ -7,7 +7,7 @@ import org.uqbar.xtrest.api.annotation.Get
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Administrador
 import org.uqbar.xtrest.api.XTRest
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.Laberinto
-import ar.edu.unq.programacionui.gatoEncerrado.dominio.LaberintosFactory
+import ar.edu.unq.programacionui.gatoEncerrado.dominio.Factory
 import ar.edu.unq.programacionui.gatoEncerrado.dominio.DatosLaberintoFactory
 
 @Accessors
@@ -15,13 +15,13 @@ import ar.edu.unq.programacionui.gatoEncerrado.dominio.DatosLaberintoFactory
 class LaberintoController {
 	
 	Administrador admin
-	LaberintosFactory factory
+	Factory factory
 	DatosLaberintoFactory datosLaberinto
 	Laberinto inicial
 	
 	new(){
 		admin = new Administrador("Juan")
-		factory = new LaberintosFactory(admin.laberintos)
+		factory = new Factory(admin.laberintos)
 		datosLaberinto = new DatosLaberintoFactory()
 	}
 	
