@@ -15,13 +15,15 @@
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-    <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-resource/angular-resource.min.js"></script>
 
     <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
     
     <script src="node_modules/angular-loading-bar/build/loading-bar.min.js"></script>
     <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.min.css"/>
+
+    <script src="node_modules/bootbox/bootbox.min.js"></script>
 
     <link rel="stylesheet" href="css/aditionalStyle.css">
 
@@ -90,13 +92,14 @@
                                 <h2 class="media-heading">{{l.nombreLaberinto}}</h2>
                                 <p>Phasellus nisi ipsum, ornare non luctus id, molestie sit amet mauris. Mauris nec mi volutpat, tincidunt sem ut, dignissim diam. In et risus nec est pulvinar blandit.</p>
                                 <div class="media-left">
-                                    <button class="btn btn-primary">Jugar</button>
+                                    <button ng-click="jugar()" class="btn btn-primary">Jugar</button>
                                 </div>
                             </div>
                         </div>
                   </uib-accordion-group>
               </uib-accordion>
             </div>
+            <div ng-show="estaJugando" ui-sref="iniciarLaberinto"></div>
     		<div ng-if="laberintoSeleccionado" class="col-xs-12 col-md-6 example-animate-container">
                 <h1>Laberinto Seleccionado:</h1>
                 <div class="container">

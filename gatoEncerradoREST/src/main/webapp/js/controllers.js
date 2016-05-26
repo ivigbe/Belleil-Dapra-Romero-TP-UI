@@ -1,8 +1,10 @@
-app.controller('GatoEncerradoCtrl', ['$scope',function($scope, $resource, $timeout, cfpLoadingBar, Laberintos){
+app.controller('GatoEncerradoCtrl', ['$scope', function($scope, $resource, $timeout, cfpLoadingBar, Laberintos){
 
 	$scope.isOpen = false;
+    $scope.estaJugando = false;
 	$scope.laberintoSeleccionado = null;
 	$scope.laberintos = [
+    /*
 	{"nombreLaberinto":"Casa embrujada","idLaberinto":1,"pathImagenLaberinto":"img/casaEmbrujada.jpg",
 	"descripcionLaberinto":"Proin laoreet consectetur malesuada. Suspendisse feugiat lorem mauris, et feugiat sapien pulvinar vitae. Suspendisse potenti. Nulla at dignissim risus. Sed nisl elit, consequat a hendrerit id, consectetur ac orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla erat nibh, condimentum non nunc non, efficitur porttitor lorem. Morbi quis est sed ipsum malesuada aliquam ac fringilla ante. Etiam ac orci leo.",
 	"habitaciones":[],"inventarioDelJugador":[]},
@@ -10,6 +12,7 @@ app.controller('GatoEncerradoCtrl', ['$scope',function($scope, $resource, $timeo
 	{"nombreLaberinto":"Bunker de Macri","idLaberinto":2,"pathImagenLaberinto":"img/bunker.jpg",
 	"descripcionLaberinto":"Cras imperdiet orci massa, eleifend tincidunt lectus cursus eget. Morbi elementum placerat velit vitae sagittis. Aenean orci orci, mattis nec volutpat eget, egestas ut lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla nec nisi ut tellus interdum convallis.",
 	"habitaciones":[],"inventarioDelJugador":[]}
+    */
 	];
 
 	function errorHandler(error) {
@@ -26,7 +29,6 @@ app.controller('GatoEncerradoCtrl', ['$scope',function($scope, $resource, $timeo
 		}
 	};
 
-	/*
 	$scope.actualizarLista = function() {
         Laberintos.query(function(data) {
             $scope.laberintos = data;
@@ -34,17 +36,6 @@ app.controller('GatoEncerradoCtrl', ['$scope',function($scope, $resource, $timeo
     };
     
     $scope.actualizarLista();
-
-    $scope.guardarLaberinto = function() {
-        Laberintos.update($scope.laberintoSeleccionado, function() {
-            $scope.notificarMensaje('Laberinto actualizado!');
-            $scope.actualizarLista();
-        }, errorHandler);
-
-        $scope.laberintoSeleccionado = null;
-    };
-
-    */
 
     $scope.msgs = [];
     $scope.notificarMensaje = function(mensaje) {
@@ -63,4 +54,12 @@ app.controller('GatoEncerradoCtrl', ['$scope',function($scope, $resource, $timeo
             while (mensajes.length > 0) mensajes.pop();
         }, 3000);
     }
+}]);
+
+app.controller('LaberintoEnCursoController', ['$scope', function($scope, $resource, $timeout, $controller, cfpLoadingBar, Laberintos){
+
+    $controller('GatoEncerradoCtrl', {$scope: $scope});
+
+    $scope.acciones = [];
+    $scope.habitacionSeleccionada = null;
 }]);
