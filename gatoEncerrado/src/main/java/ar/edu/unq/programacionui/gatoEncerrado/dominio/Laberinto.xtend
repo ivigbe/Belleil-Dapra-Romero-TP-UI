@@ -20,10 +20,11 @@ class Laberinto {
 		
 	}
 	
-	new(String nombreLaberinto, Integer id, String nombreDeImagen){
+	new(String nombreLaberinto, Integer id, String nombreDeImagen, String descripcion){
 		this.nombreLaberinto = nombreLaberinto
 		idLaberinto = id
 		pathImgLaberinto += nombreDeImagen
+		this.descripcion = descripcion
 		
 	}
 	

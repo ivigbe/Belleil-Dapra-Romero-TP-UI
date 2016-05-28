@@ -1,7 +1,8 @@
-app.controller('GatoEncerradoCtrl', ['$scope', function($scope, $resource, $timeout, cfpLoadingBar, Laberintos){
+app.controller('GatoEncerradoCtrl', function($scope, $resource, $timeout, cfpLoadingBar, Laberintos){
 
 	$scope.isOpen = false;
     $scope.estaJugando = false;
+    $scope.inventarioActual = null;
 	$scope.laberintoSeleccionado = null;
 	$scope.laberintos = [
     /*
@@ -17,7 +18,7 @@ app.controller('GatoEncerradoCtrl', ['$scope', function($scope, $resource, $time
 
 	function errorHandler(error) {
         $scope.notificarError(error.data);
-    }
+    };
 
 	$scope.seleccionarLaberinto = function(laberinto){
 
@@ -30,7 +31,7 @@ app.controller('GatoEncerradoCtrl', ['$scope', function($scope, $resource, $time
 	};
 
 	$scope.actualizarLista = function() {
-        Laberintos.query(function(data) {
+        Laberintos.getLaberintos(function(data) {
             $scope.laberintos = data;
         }, errorHandler);
     };
@@ -53,13 +54,24 @@ app.controller('GatoEncerradoCtrl', ['$scope', function($scope, $resource, $time
         $timeout(function() {
             while (mensajes.length > 0) mensajes.pop();
         }, 3000);
-    }
-}]);
+    };
 
-app.controller('LaberintoEnCursoController', ['$scope', function($scope, $resource, $timeout, $controller, cfpLoadingBar, Laberintos){
+    $scope.jugar = function(inventario){
+
+        $scope.estaJugando = true;
+        $scope.inventarioActual = inventario;
+    };
+});
+
+app.controller('LaberintoEnCursoController', function($scope, IniciarLaberinto){
 
     $controller('GatoEncerradoCtrl', {$scope: $scope});
 
     $scope.acciones = [];
     $scope.habitacionSeleccionada = null;
-}]);
+
+    $scope.actualizarJuego = function(laberintoActual){
+
+        
+    }
+});

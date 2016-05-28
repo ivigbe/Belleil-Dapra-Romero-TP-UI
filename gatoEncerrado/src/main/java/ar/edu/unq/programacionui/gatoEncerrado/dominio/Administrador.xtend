@@ -19,12 +19,12 @@ class Administrador {
 		
 		this.nombre = name
 		this.laberintos = #[
-			new Laberinto("Casa embrujada", 1, "casaEmbrujada.jpg"),
-			new Laberinto("Bunker de Macri", 2, "bunker.jpg"),
-			new Laberinto("Casa Carrio", 3, "casa.jpg"),
-			new Laberinto("Asilo Abandonado", 4, "asilo.jpg"),
-			new Laberinto("Hospital", 5, "hospital.jpg"),
-			new Laberinto("Sede Google", 6, "google.jpg")
+			new Laberinto("Casa embrujada", 1, "casaEmbrujada.jpg", "Casa embrujada de transilvania"),
+			new Laberinto("Bunker de Macri", 2, "bunker.jpg", "Fiesta en el bunker de Macri yeah yeah!"),
+			new Laberinto("Casa Carrio", 3, "casa.jpg", "Casa de campo de Elisa Carrio"),
+			new Laberinto("Asilo Abandonado", 4, "asilo.jpg", "Asilo del abuelo de Bart"),
+			new Laberinto("Hospital", 5, "hospital.jpg", "Hospital del Grand Theft Auto V"),
+			new Laberinto("Sede Google", 6, "google.jpg", "Sede de Google en California, despues de un ataque zombie")
 		]
 		
 		this.habitaciones = #[
