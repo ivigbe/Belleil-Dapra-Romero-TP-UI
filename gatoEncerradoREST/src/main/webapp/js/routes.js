@@ -4,7 +4,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
     .state('iniciarLaberinto', {
-      url: '/iniciarLaberinto',
+    	url: '/iniciarLaberinto/:idUsuario/:idLaberinto',
       templateUrl: 'templates/laberintoEnCurso.html',
       controller: 'LaberintoEnCursoController as LaberintoEnCurso'
     });
