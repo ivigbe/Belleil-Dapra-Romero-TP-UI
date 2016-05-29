@@ -76,8 +76,10 @@ $controller('GatoEncerradoCtrl', {$scope: $scope});
         $scope.notificarError(error.data);
     };
 
-    $scope.actualizarJuego = function(){            //saque el parametro de laberinto actual poruqe el JSON no esta cargado con todos los datos de laberinto que se necesitan para poder jugar
-        IniciarLaberinto.iniciar(function(data){ // HAY QUE PASARLE LOS DOS PARAMETROS asi carga el JSON en laberintoENJUEGO
+    //saque el parametro de laberinto actual poruqe el JSON no esta cargado con todos los datos de laberinto que se necesitan para poder jugar
+    // HAY QUE PASARLE LOS DOS PARAMETROS asi carga el JSON en laberintoENJUEGO
+    $scope.actualizarJuego = function(){
+        IniciarLaberinto.iniciar(function(data){
         $scope.laberintoEnJuego = data;
         }, errorHandler);
     };

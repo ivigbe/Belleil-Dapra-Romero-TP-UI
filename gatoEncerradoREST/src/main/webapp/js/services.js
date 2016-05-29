@@ -9,3 +9,9 @@ app.factory('IniciarLaberinto', function($resource) {
     	'iniciar': { method: 'GET', isArray: false, params:{idUsuario: '@idUsuario', idLaberinto: '@idLaberinto'}}
     });
 });
+
+app.factory('RealizarAccion', function($resource) {
+    return $resource('/realizarAccion/:idHabitacion/:idAccion/:idUsuario', {'idHabitacion': '@idHabitacion', 'idAccion': '@idAccion', 'idUsuario': '@idUsuario'},{
+    	'resultado': { method: 'GET', isArray: false, params:{idHabitacion: '@idHabitacion', idAccion: '@idAccion', idUsuario: '@idUsuario'}}
+    });
+});
