@@ -22,7 +22,7 @@ class LaberintoController {
 	new(){
 		admin = new Administrador("Juan")
 		factory = new Factory(admin.laberintos)
-		datosLaberinto = new DatosLaberintoFactory()
+		datosLaberinto = new DatosLaberintoFactory(admin.obtenerJugador(1))
 	}
 	
 	extension JSONUtils = new JSONUtils

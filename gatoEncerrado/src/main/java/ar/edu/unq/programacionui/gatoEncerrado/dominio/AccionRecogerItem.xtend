@@ -17,6 +17,7 @@ class AccionRecogerItem extends Accion{
 	
 	override realizarAccion() {
 		habitacion.laberinto.jugadorActual.recogerItem(this)
+		habitacion.removerAccion(this)
 		
 	}
 	

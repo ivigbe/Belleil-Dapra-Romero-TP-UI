@@ -30,12 +30,17 @@ class Administrador {
 		this.habitaciones = #[
 			
 			new Habitacion(1, "Cocina", this.laberintos.get(0)),
-			new Habitacion(2, "Banio", this.laberintos.get(1)),
-			new Habitacion(3, "Comedor", this.laberintos.get(2)),
-			new Habitacion(4, "Patio", this.laberintos.get(3)),
-			new Habitacion(5, "Quincho", this.laberintos.get(4)),
-			new Habitacion(6, "Hall", this.laberintos.get(5))
+			new Habitacion(2, "Banio", this.laberintos.get(0)),
+			new Habitacion(3, "Comedor", this.laberintos.get(0)),
+			new Habitacion(4, "Patio", this.laberintos.get(0)),
+			new Habitacion(5, "Quincho", this.laberintos.get(0)),
+			new Habitacion(6, "Hall", this.laberintos.get(0))
 		]
+		
+		for(Habitacion h : this.habitaciones){
+			this.laberintos.get(0).agregarHabitacion(h)
+		}
+		
 		
 		this.jugadores = #[
 			new Jugador(1, this.habitaciones.get(0)),
@@ -45,12 +50,21 @@ class Administrador {
 		this.acciones = #[
 			
 			new AccionDesplazamiento(1, this.habitaciones.get(0), this.habitaciones.get(1)),
-			new AccionRecogerItem(2, this.habitaciones.get(0), new Item("Pala", "Para cavar")),
-			new AccionUsarItem(3, this.habitaciones.get(0), new Item("El esperado", "El que estabamos esperando"), new AccionDesplazamiento(7, this.habitaciones.get(0), this.habitaciones.get(3))),
-			new AccionGanarLaberinto(4, this.habitaciones.get(0)),
-			new AccionDesplazamiento(5, this.habitaciones.get(0), this.habitaciones.get(0)),
-			new AccionDesplazamiento(6, this.habitaciones.get(0), this.habitaciones.get(0))
+			new AccionRecogerItem(2, this.habitaciones.get(1), new Item("Pala", "Para cavar")),
+			new AccionDesplazamiento(3, this.habitaciones.get(1), this.habitaciones.get(2)),
+			new AccionUsarItem(4, this.habitaciones.get(2), new Item("El esperado", "El que estabamos esperando"), new AccionDesplazamiento(7, this.habitaciones.get(2), this.habitaciones.get(3))),
+			new AccionDesplazamiento(5, this.habitaciones.get(3), this.habitaciones.get(4)),
+			new AccionDesplazamiento(6, this.habitaciones.get(4), this.habitaciones.get(5)),
+			new AccionGanarLaberinto(8, this.habitaciones.get(5))
 		]
+		
+		this.habitaciones.get(0).agregarAccion(this.acciones.get(0))
+		this.habitaciones.get(1).agregarAccion(this.acciones.get(1))
+		this.habitaciones.get(1).agregarAccion(this.acciones.get(2))
+		this.habitaciones.get(2).agregarAccion(this.acciones.get(3))
+		this.habitaciones.get(3).agregarAccion(this.acciones.get(4))
+		this.habitaciones.get(4).agregarAccion(this.acciones.get(5))
+		this.habitaciones.get(5).agregarAccion(this.acciones.get(6))
 		
 		this.laberintos.get(0).jugadorActual = jugadores.get(0)
 	}

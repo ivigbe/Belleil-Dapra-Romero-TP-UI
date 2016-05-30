@@ -26,6 +26,7 @@ class Laberinto {
 		pathImgLaberinto += nombreDeImagen
 		this.descripcion = descripcion
 		
+		
 	}
 	
 	def void agregarHabitacion(Habitacion habitacion) {
@@ -86,5 +87,9 @@ class Laberinto {
 		return false
 	}
 	
+	
+	def agregarJugador(Jugador jugador){
+		jugadorActual = jugador
+	}
 	
 }

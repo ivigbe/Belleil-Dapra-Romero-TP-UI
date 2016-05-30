@@ -30,7 +30,6 @@ class Jugador {
 		if(inventario.indexOf(inventario.last()) < 15){
 			
 			inventario.add(accionItem.itemARecoger)
-			habitacionActual.removerAccion(accionItem)	
 		}
 		else{
 			
@@ -42,21 +41,8 @@ class Jugador {
 		inventario.size
 	}
 	
-	def moverseA(AccionDesplazamiento accionHabitacion) {
-		var habitacionAnterior = habitacionActual
-		habitacionActual = accionHabitacion.proximaHabitacion
-		habitacionAnterior.removerAccion(accionHabitacion)
-	}
-	
-	def usarItem(AccionUsarItem accion) {
-		if(this.estaEnElInventario(accion.itemEsperado)){
-			habitacionActual.agregarAccion(accion.accionResultante)
-			habitacionActual.removerAccion(accion)
-		}
-		else{
-			throw new ItemNoEncontradoException()
-		}
-		
+	def realizarAccion(Accion accion){
+		accion.realizarAccion
 	}
 	
 	def estaEnElInventario(Item item) {
@@ -64,6 +50,7 @@ class Jugador {
 	}
 	
 	def void abandonarLaberinto(){
+		laberintosAbandonados.add(habitacionActual.laberinto)
 		throw new LaberintoAbandonadoException()
 	}
 	

@@ -18,7 +18,15 @@ class AccionUsarItem extends Accion{
 	}
 	
 	override realizarAccion() {
-		habitacion.laberinto.jugadorActual.usarItem(this)
+	
+		if(habitacion.laberinto.jugadorActual.estaEnElInventario(itemEsperado)){
+			habitacion.agregarAccion(accionResultante)
+			habitacion.removerAccion(this)
+			habitacion.laberinto.jugadorActual.inventario.remove(itemEsperado)
+		}
+		else{
+			throw new ItemNoEncontradoException()
+		}
 	}
 	
 	override generarResultado(Integer idUsuario) {

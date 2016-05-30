@@ -55,10 +55,13 @@ class DatosLaberintoFactory {
 	
 	Jugador jugadorActual
 	
-	new(){}
+	new(Jugador j){
+		
+		jugadorActual = j
+	}
 	
 	def minificar(Laberinto laberinto) {
 		
-		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones, jugadorActual.inventario)
+		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones(), jugadorActual.inventario, laberinto.pathImgLaberinto)
 	}
 }

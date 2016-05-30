@@ -16,10 +16,11 @@ class AccionDesplazamiento extends Accion{
 	}
 	
 	override realizarAccion() {
-		this.habitacion.laberinto.jugadorActual.habitacionActual = proximaHabitacion
+		habitacion.laberinto.jugadorActual.habitacionActual = proximaHabitacion
+		habitacion.removerAccion(this)
 		
 	}
-
+	
 	override generarResultado(Integer idUsuario){
 		
 		new ResultadoAccionDesplazamiento(idUsuario, proximaHabitacion)

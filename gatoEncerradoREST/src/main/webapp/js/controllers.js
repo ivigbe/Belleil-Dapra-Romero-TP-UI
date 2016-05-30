@@ -29,6 +29,8 @@ app.controller('GatoEncerradoCtrl', function($scope, $resource, $timeout, Laberi
 		else{
 			$scope.laberintoSeleccionado = null;
 		}
+
+        console.log($scope.laberintoSeleccionado.idLaberinto);
 	};
 
 	$scope.actualizarLista = function() {
@@ -64,13 +66,11 @@ app.controller('GatoEncerradoCtrl', function($scope, $resource, $timeout, Laberi
     };
 });
 
-app.controller('LaberintoEnCursoController', function($scope, $controller, IniciarLaberinto){
-
-$controller('GatoEncerradoCtrl', {$scope: $scope});
+app.controller('LaberintoEnCursoController', function($scope, IniciarLaberinto){
 
     $scope.acciones = [];
     $scope.habitacionSeleccionada = null;
-    $scope.laberintoEnJuego = null;
+    $scope.laberintoEnJuego = null; //{"nombreLaberinto":"Casa embrujada","idLaberinto":1,"pathImagenLaberinto":null,"descripcionLaberinto":null,"habitaciones":[],"inventarioDelJugador":[]};
 
     function errorHandler(error) {
         $scope.notificarError(error.data);
@@ -79,10 +79,9 @@ $controller('GatoEncerradoCtrl', {$scope: $scope});
     //saque el parametro de laberinto actual poruqe el JSON no esta cargado con todos los datos de laberinto que se necesitan para poder jugar
     // HAY QUE PASARLE LOS DOS PARAMETROS asi carga el JSON en laberintoENJUEGO
     $scope.actualizarJuego = function(){
-        IniciarLaberinto.iniciar(function(data){
+        IniciarLaberinto.iniciar({idUsuario: 1 ,idLaberinto: 1}, function(data){
         $scope.laberintoEnJuego = data;
         }, errorHandler);
     };
-
     $scope.actualizarJuego();
 });
