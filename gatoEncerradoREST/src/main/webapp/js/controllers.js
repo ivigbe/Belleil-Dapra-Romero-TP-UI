@@ -66,11 +66,12 @@ app.controller('GatoEncerradoCtrl', function($scope, $resource, $timeout, Laberi
     };
 });
 
-app.controller('LaberintoEnCursoController', function($scope, IniciarLaberinto){
+app.controller('LaberintoEnCursoController', function($scope, IniciarLaberinto, RealizarAccion){
 
+    $scope.laberintoEnJuego = null;
     $scope.acciones = [];
-    $scope.habitacionSeleccionada = null;
-    $scope.laberintoEnJuego = null; //{"nombreLaberinto":"Casa embrujada","idLaberinto":1,"pathImagenLaberinto":null,"descripcionLaberinto":null,"habitaciones":[],"inventarioDelJugador":[]};
+    $scope.habitaciones = [];
+    $scope.habitacionActual = null;
 
     function errorHandler(error) {
         $scope.notificarError(error.data);
@@ -81,7 +82,17 @@ app.controller('LaberintoEnCursoController', function($scope, IniciarLaberinto){
     $scope.actualizarJuego = function(){
         IniciarLaberinto.iniciar({idUsuario: 1 ,idLaberinto: 1}, function(data){
         $scope.laberintoEnJuego = data;
+        $scope.habitaciones = $scope.laberintoEnJuego.habitaciones;
+        $scope.habitacionActual = $scope.habitaciones[0];
         }, errorHandler);
     };
     $scope.actualizarJuego();
+
+    $scope.realizarAccion = function(idAccion){
+        RealizarAccion.resultado({idHabitacion: $scope.habitacionActual, idAccion: idAccion, idUsuario: 1},function(data){
+            console.log(data);
+            $scope.habitacionActual = data.proximaHabitacionJugador;
+            console.log($scope.habitacionActual);
+        });
+    };
 });

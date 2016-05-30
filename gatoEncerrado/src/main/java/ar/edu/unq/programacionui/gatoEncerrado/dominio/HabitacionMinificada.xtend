@@ -7,12 +7,12 @@ import java.util.List
 class HabitacionMinificada {
 	
 	Integer idHabitacion
-	List<Accion> acciones
+	List<AccionMinificada> acciones
 	Boolean esInicial
 	Boolean esFinal
 	String pathImagenHabitacion
 	
-	new(Integer id, List<Accion> accs, Boolean esInicial, Boolean esFinal, String path){
+	new(Integer id, List<AccionMinificada> accs, Boolean esInicial, Boolean esFinal, String path){
 		
 		this.idHabitacion = id
 		this.acciones = accs
@@ -20,4 +20,5 @@ class HabitacionMinificada {
 		this.esFinal = esFinal
 		this.pathImagenHabitacion = path
 	}
+	
 }

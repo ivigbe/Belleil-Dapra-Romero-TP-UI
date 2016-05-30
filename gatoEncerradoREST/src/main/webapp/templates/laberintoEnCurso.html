@@ -57,17 +57,17 @@
 	<h2>{{laberintoEnJuego.nombreLaberinto}}</h2>
 	<div class="row">
 		<div class="col-xs-12 col-md-4">
-			<h3>{{habitacionSeleccionada.nombreHabitacion}}</h3>
-			<img src="{{habitacionSeleccionada.pathImgHabitacion}}" class="media-object img-thumbnail img-responsive">
+			<h3>{{habitacionActual.nombreHabitacion}}</h3>
+			<img src="{{habitacionActual.pathImgHabitacion}}" class="media-object img-thumbnail img-responsive">
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<label class="label label-default">Acciones</label>
-			<a ng-repeat="a in habitacionSeleccionada.acciones" href="#" class="btn btn-default">{{a.descripcionAccion}}</a>
+			<a ng-repeat="a in habitacionActual.acciones" href="#" class="btn btn-default" ng-click="realizarAccion(a.idAccion)">{{a.descripcionAccion}}</a>
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<label class="label label-default">Inventario</label>
 			<ul class="list-unstyled">
-				<li ng-repeat="i in laberintoSeleccionado.inventarioDelJugador">{{i.nombre}}</li>
+				<li ng-repeat="i in laberintoEnJuego.inventarioDelJugador">{{i.nombre}}</li>
 			</ul>
 			<button class="btn btn-success">Tirar</button>
 		</div>

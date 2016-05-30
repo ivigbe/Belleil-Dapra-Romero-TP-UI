@@ -36,7 +36,10 @@ class HabitacionFactory{
 		habitacionesAMinificar = habitaciones
 	}
 	
-	def minificarHabitaciones(){
+	new() {
+	}
+	
+	def List<HabitacionMinificada> minificarHabitaciones(){
 		
 		var habitacionesMinificadas = newArrayList()
 		for(h:habitacionesAMinificar){
@@ -46,9 +49,33 @@ class HabitacionFactory{
 	}
 	
 	def minificar(Habitacion hab) {
-		return new HabitacionMinificada(hab.idHabitacion, hab.acciones, hab.esHabitacionInicial, hab.esHabitacionFinal, hab.pathImgHabitacion)
+		return new HabitacionMinificada(hab.idHabitacion, new AccionFactory(hab.acciones).minificarAcciones(), hab.esHabitacionInicial, hab.esHabitacionFinal, hab.pathImgHabitacion)
 	}
 }
+
+class AccionFactory{
+	
+	List<Accion> accionesAMinificar
+	
+	new(List<Accion> acciones){
+		
+		accionesAMinificar = acciones
+	}
+	
+	def minificarAcciones(){
+		
+		var accionesMinificadas = newArrayList()
+		for(h:accionesAMinificar){
+			accionesMinificadas.add(minificar(h))
+		}
+		return accionesMinificadas
+	}
+	
+	def minificar(Accion acc) {
+		return new AccionMinificada(acc.idAccion, acc.descripcionAccion)
+	}
+}
+
 
 @Accessors
 class DatosLaberintoFactory {
@@ -62,6 +89,6 @@ class DatosLaberintoFactory {
 	
 	def minificar(Laberinto laberinto) {
 		
-		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones(), jugadorActual.inventario, laberinto.pathImgLaberinto)
+		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones, jugadorActual.inventario, laberinto.pathImgLaberinto)
 	}
 }

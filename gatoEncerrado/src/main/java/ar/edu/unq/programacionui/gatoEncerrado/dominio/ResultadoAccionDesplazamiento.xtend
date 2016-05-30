@@ -5,9 +5,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class ResultadoAccionDesplazamiento extends Resultado{
 	
-	Habitacion proximaHabitacionJugador
+	HabitacionMinificada proximaHabitacionJugador
 	
-	new(Integer idUsuario, Habitacion prox) {
+	new(Integer idUsuario, HabitacionMinificada prox) {
 		super(idUsuario)
 		this.proximaHabitacionJugador = prox
 	}
