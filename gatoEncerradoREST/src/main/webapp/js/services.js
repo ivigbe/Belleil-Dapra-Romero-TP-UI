@@ -11,7 +11,7 @@ app.factory('IniciarLaberinto', function($resource) {
 });
 
 app.factory('RealizarAccion', function($resource) {
-    return $resource('/realizarAccion/:idHabitacion/:idAccion/:idUsuario', {'idHabitacion': '@idHabitacion', 'idAccion': '@idAccion', 'idUsuario': '@idUsuario'},{
+    return $resource('/realizarAccion?idHabitacion=:idHabitacion&idAccion=:idAccion&idUsuario=:idUsuario', {'idHabitacion': '@idHabitacion', 'idAccion': '@idAccion', 'idUsuario': '@idUsuario'},{
     	'resultado': { method: 'GET', isArray: false, params:{idHabitacion: '@idHabitacion', idAccion: '@idAccion', idUsuario: '@idUsuario'}}
     });
 });

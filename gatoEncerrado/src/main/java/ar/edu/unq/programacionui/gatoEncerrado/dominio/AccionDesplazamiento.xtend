@@ -23,6 +23,6 @@ class AccionDesplazamiento extends Accion{
 	
 	override generarResultado(Integer idUsuario){
 		
-		new ResultadoAccionDesplazamiento(idUsuario, proximaHabitacion)
+		new ResultadoAccionDesplazamiento(idUsuario, new HabitacionFactory().minificar(proximaHabitacion))
 	}
 }
