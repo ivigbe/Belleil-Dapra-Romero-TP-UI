@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GatoEncerradoMobile</string>
+    <string name="nombreLaberinto">Laberinto</string>
+    <string name="descripcionLaberintoMockup">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam finibus mollis tellus, ut tincidunt nunc blandit eget. Curabitur non sem id ante pharetra accumsan quis eget ipsum. Cras sit amet vestibulum arcu. Etiam tincidunt rhoncus diam eu congue. Fusce ac urna hendrerit, pretium lectus at, volutpat enim.</string>
+</resources>
