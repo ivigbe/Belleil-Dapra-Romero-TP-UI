@@ -10,11 +10,11 @@ public class Laberinto implements Serializable{
 
     String nombreLaberinto;
     Integer idLaberinto;
-    String pathImagenLaberinto;
+    int pathImagenLaberinto;
     String descripcionLaberinto;
     ArrayList<Item> inventarioDelJugador = new ArrayList<Item>(15);
 
-    public Laberinto(String nombre, Integer id, String path, String desc, ArrayList<Item> inventario){
+    public Laberinto(String nombre, Integer id, int path, String desc, ArrayList<Item> inventario){
         this.nombreLaberinto = nombre;
         this.idLaberinto = id;
         this.pathImagenLaberinto = path;
@@ -39,11 +39,11 @@ public class Laberinto implements Serializable{
         this.idLaberinto = idLaberinto;
     }
 
-    public String getPathImagenLaberinto() {
+    public int getPathImagenLaberinto() {
         return pathImagenLaberinto;
     }
 
-    public void setPathImagenLaberinto(String pathImagenLaberinto) {
+    public void setPathImagenLaberinto(int pathImagenLaberinto) {
         this.pathImagenLaberinto = pathImagenLaberinto;
     }
 

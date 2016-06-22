@@ -2,48 +2,57 @@ package ar.edu.unq.programacionui.gatoencerradomobile.laberintosApp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import ar.edu.unq.programacionui.gatoencerradomobile.R;
 import ar.edu.unq.programacionui.gatoencerradomobile.laberintos.domain.Laberinto;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link LaberintoDetailFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link LaberintoDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class LaberintoDetailFragment extends Fragment {
+public class LaberintoDetailFragment extends Fragment /*implements View.OnClickListener*/{
 
     public static final String ARG_ITEM_ID = "item_id";
-
     private Laberinto laberinto;
 
     public LaberintoDetailFragment() {
         // Required empty public constructor
     }
 
+    /*private void irAInventario(){
+
+        Intent detailIntent = new Intent(this, InventarioListActivity.class);
+        Log.w("Pelis", laberinto.getNombreLaberinto());
+        Bundle b = new Bundle();
+        b.putParcelableArrayList("InventarioJugador", (ArrayList<? extends Parcelable>) laberinto.getInventarioDelJugador());
+        detailIntent.putExtra("Inventario", b);
+        startActivity(detailIntent);
+    }*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             laberinto = (Laberinto) getArguments().get(ARG_ITEM_ID);
 
             Activity activity = this.getActivity();
-            Toolbar appBarLayout = (Toolbar) activity.findViewById(R.id.detail_toolbar);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(laberinto.getNombreLaberinto());
+            Toolbar t = (Toolbar) activity.findViewById(R.id.list_toolbar);
+            if (t != null) {
+                t.setTitle(laberinto.getNombreLaberinto());
             } else {
                 activity.setTitle(laberinto.getNombreLaberinto());
             }
@@ -53,16 +62,17 @@ public class LaberintoDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_laberinto_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
         if (laberinto != null) {
-            ImageView imgLaberintoSeleccionado = ((ImageView) rootView.findViewById(R.id.imagen_laberinto));
-            imgLaberintoSeleccionado.setImageDrawable(getResources().getDrawable(new LaberintoAdapter().getImgLaberinto(laberinto)));
             ((TextView) rootView.findViewById(R.id.descripcion_laberinto)).setText(laberinto.getDescripcionLaberinto());
+            ImageView imgGenero = ((ImageView) rootView.findViewById(R.id.imagen_laberinto));
+            imgGenero.setImageDrawable(getResources().getDrawable(laberinto.getPathImagenLaberinto()));
         }
 
         return rootView;
     }
+
+    /*@Override
+    public void onClick(View v) {irAInventario();}*/
 }

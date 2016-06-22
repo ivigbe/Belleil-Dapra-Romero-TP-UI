@@ -1,43 +1,51 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ar.edu.unq.programacionui.gatoencerradomobile.laberintosApp.LaberintoDetailFragment">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imagen_laberinto"
-        android:src="@drawable/laberinto_seleccionado"
-        android:scaleType="fitCenter"
-        android:layout_above="@+id/descripcion_laberinto"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/descripcionLaberintoMockup"
-        android:id="@+id/descripcion_laberinto"
-        android:textColor="#212121"
-        android:textAlignment="center"
-        android:textStyle="italic"
-        android:layout_marginBottom="32dp"
-        android:layout_above="@+id/boton_volver"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:textColor="@android:color/white"
-        android:id="@+id/boton_volver"
-        android:background="@color/button_material_dark"
-        android:elevation="4dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imagen_laberinto"
+            android:src="@drawable/laberinto_seleccionado"
+            android:scaleType="fitCenter"
+            android:layout_above="@+id/descripcion_laberinto"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/descripcionLaberintoMockup"
+            android:id="@+id/descripcion_laberinto"
+            android:textColor="#212121"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:layout_marginBottom="32dp"
+            android:layout_above="@+id/boton_ver_inventario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Inventario"
+            android:textColor="@android:color/white"
+            android:id="@+id/boton_ver_inventario"
+            android:background="@color/button_material_dark"
+            android:elevation="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal|bottom" />
+
+    </RelativeLayout>
 
 </FrameLayout>

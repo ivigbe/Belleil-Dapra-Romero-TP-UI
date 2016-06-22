@@ -8,21 +8,11 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar android:id="@+id/detail_toolbar"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            app:layout_collapseMode="pin"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:fitsSystemWindows="true" app:contentScrim="?attr/colorPrimary"
-            android:background="@color/background_material_dark"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-        </android.support.v7.widget.Toolbar>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nombreLaberinto"
-            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"

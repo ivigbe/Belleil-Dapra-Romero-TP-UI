@@ -1,10 +1,14 @@
 package ar.edu.unq.programacionui.gatoencerradomobile.adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.support.annotation.DrawableRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -18,8 +22,8 @@ import ar.edu.unq.programacionui.gatoencerradomobile.laberintos.domain.Laberinto
 public class LaberintoAdapter extends ArrayAdapter<Laberinto>{
 
 
-    public LaberintoAdapter(Context context, int resource, List<Laberinto> objects) {
-        super(context, resource, objects);
+    public LaberintoAdapter(Context context, List<Laberinto> objects) {
+        super(context, R.layout.laberinto_row, objects);
     }
 
     @Override
@@ -31,16 +35,14 @@ public class LaberintoAdapter extends ArrayAdapter<Laberinto>{
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.pelicula_row, parent, false);
+        View rowView = inflater.inflate(R.layout.laberinto_row, parent, false);
         final Laberinto laberinto = getItem(position);
 
-        /*
-        TextView tvPelicula = (TextView) rowView.findViewById(R.id.lblPelicula);
-        tvPelicula.setText(laberinto.toString());
+        TextView tvLaberinto = (TextView) rowView.findViewById(R.id.text_laberinto_row);
+        tvLaberinto.setText(laberinto.toString());
 
-        TextView tvActores = (TextView) rowView.findViewById(R.id.lblActores);
-        tvActores.setText(laberinto.getActores());
-        */
+        ImageView imgLaberinto = (ImageView) rowView.findViewById(R.id.imagen_laberinto);
+        imgLaberinto.setImageResource(laberinto.getPathImagenLaberinto());
         return rowView;
     }
 }

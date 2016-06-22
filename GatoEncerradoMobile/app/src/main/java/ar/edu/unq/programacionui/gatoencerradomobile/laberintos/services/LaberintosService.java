@@ -12,6 +12,6 @@ import retrofit.http.Path;
  */
 public interface LaberintosService {
 
-    @GET("laberintosMobile/{idUsuario}")
+    @GET("laberintos/{idUsuario}")
     public Call<List<Laberinto>> getLaberintos(@Path("idUsuario") String id);
 }
