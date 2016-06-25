@@ -6,11 +6,22 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Factory {
 	List<Laberinto> laberintosAMinificar
+	Jugador jugadorActual
 	
-	new(List<Laberinto> laberintos){
+	new(List<Laberinto> laberintos, Jugador jugador){
 		
 		laberintosAMinificar = laberintos
+		jugadorActual = jugador
+	}
+	
+	def minificarLaberintosMobile(){
 		
+		var laberintosForMobile = newArrayList()
+		
+		for(l : laberintosAMinificar){
+			laberintosForMobile.add(minificarParaMobile(l))
+		}
+		return laberintosForMobile
 	}
 	
 	def minificarLaberintos(){
@@ -21,10 +32,18 @@ class Factory {
 		return laberintosMinificados
 	}
 	
-	def minificar(Laberinto laberinto) {
-		return new LaberintoMinificado(laberinto.nombreLaberinto, laberinto.idLaberinto, laberinto.pathImgLaberinto, laberinto.descripcion)
+	def minificarParaMobile(Laberinto l){
+		return new LaberintoMobile(l.idLaberinto, l.nombreLaberinto, l.pathImgLaberinto, l.descripcion, jugadorActual.inventario)
 	}
 	
+	def minificar(Laberinto laberinto) {
+		
+		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones, jugadorActual.inventario, laberinto.pathImgLaberinto)
+	}
+	
+	def minificarParaIniciar(Laberinto laberinto) {
+		return new LaberintoMinificado(laberinto.nombreLaberinto, laberinto.idLaberinto, laberinto.pathImgLaberinto, laberinto.descripcion)
+	}
 }
 
 class HabitacionFactory{
@@ -73,22 +92,5 @@ class AccionFactory{
 	
 	def minificar(Accion acc) {
 		return new AccionMinificada(acc.idAccion, acc.descripcionAccion)
-	}
-}
-
-
-@Accessors
-class DatosLaberintoFactory {
-	
-	Jugador jugadorActual
-	
-	new(Jugador j){
-		
-		jugadorActual = j
-	}
-	
-	def minificar(Laberinto laberinto) {
-		
-		return new LaberintoMinificado(laberinto.idLaberinto, laberinto.nombreLaberinto, new HabitacionFactory(laberinto.habitaciones).minificarHabitaciones, jugadorActual.inventario, laberinto.pathImgLaberinto)
 	}
 }

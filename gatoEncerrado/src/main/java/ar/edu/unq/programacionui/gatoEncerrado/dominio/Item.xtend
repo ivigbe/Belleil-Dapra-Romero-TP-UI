@@ -9,16 +9,19 @@ import static org.uqbar.commons.model.ObservableUtils.*
 @Observable
 class Item {
 	
-	String idItem
+	Integer idItem
 	String nombre
 	String descripcion
+	String pathImgItem = "res/drawable/"
 	
 	new(){}
 	
-	new(String nombre, String descripcion){
+	new(Integer id, String nombre, String descripcion, String nombreImg){
 		
+		this.idItem = id
 		this.nombre = nombre
 		this.descripcion = descripcion
+		this.pathImgItem += nombreImg
 	}
 	
 	def validarNombreItem(){

@@ -38,7 +38,7 @@ class SimulacionJuegoTest {
 		habitacion3 = new Habitacion(3, "Comedor", laberinto)
 		habitacion4 = new Habitacion(4, "Patio", laberinto)
 		
-		pala = new Item("Pala", "Para cavar")
+		pala = new Item(8, "Pala", "Para cavar", "pala.jpg")
 		
 		accionDesplazamiento = new AccionDesplazamiento(1, habitacion1, habitacion2)
 		accionRecogerItem = new AccionRecogerItem(2, habitacion2, pala)

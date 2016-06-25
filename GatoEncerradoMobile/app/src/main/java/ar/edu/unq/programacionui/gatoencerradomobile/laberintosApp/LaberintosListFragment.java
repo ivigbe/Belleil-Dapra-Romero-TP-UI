@@ -1,6 +1,8 @@
 package ar.edu.unq.programacionui.gatoencerradomobile.laberintosApp;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +31,7 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class LaberintosListFragment extends ListFragment implements View.OnClickListener {
+public class LaberintosListFragment extends ListFragment implements View.OnClickListener{
 
     private Callbacks mCallbacks = sDummyCallbacks;
 
@@ -36,6 +40,18 @@ public class LaberintosListFragment extends ListFragment implements View.OnClick
     public LaberintosListFragment() {
         // Required empty public constructor
     }
+
+    @Override
+    public void onClick(View v) {
+        irAInventario();
+    }
+
+    private void irAInventario(){
+
+        Intent intent = new Intent(getContext(), InventarioListActivity.class);
+        startActivity(intent);
+    }
+
     public interface Callbacks {
         void onItemSelected(Laberinto laberinto);
     }
@@ -46,11 +62,16 @@ public class LaberintosListFragment extends ListFragment implements View.OnClick
         }
     };
 
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return super.onCreateAnimation(transit, enter, nextAnim);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String BASE_URL = "http://192.168.0.21:9000/laberintos/";
+
+        String BASE_URL = "http://192.168.0.21:9500/laberintosMobile";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -58,28 +79,18 @@ public class LaberintosListFragment extends ListFragment implements View.OnClick
                 .build();
 
         laberintosService = retrofit.create(LaberintosService.class);
+
+        obtenerLaberintos();
     }
 
     private void obtenerLaberintos(){
 
-        final Call<List<Laberinto>> laberintoCall = laberintosService.getLaberintos("1");
+        final Call<List<Laberinto>> laberintoCall = laberintosService.getLaberintosMobile("1");
 
         laberintoCall.enqueue(new Callback<List<Laberinto>>() {
             @Override
             public void onResponse(Response<List<Laberinto>> response, Retrofit retrofit) {
-                List<Laberinto> laberintos = response.body();/*
-                ListView laberintosView = (ListView) findViewById(R.id.list_laberintos);
-                View headerList = (View) getLayoutInflater().inflate(R.layout.list_header_row, null);
-                laberintosView.addHeaderView(headerList);
-                laberintosView.setAdapter(new LaberintoAdapter(getApplicationContext(), laberintos));
-
-                laberintosView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        TextView tv = (TextView) findViewById(R.id.text_laberinto_row);
-                        Toast.makeText(getApplicationContext(), tv.getText(), Toast.LENGTH_SHORT).show();
-                    }*/
-
+                List<Laberinto> laberintos = response.body();
                 setListAdapter(new LaberintoAdapter(
                         getActivity(),
                         laberintos));
@@ -104,17 +115,19 @@ public class LaberintosListFragment extends ListFragment implements View.OnClick
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_laberintos_list, container, false);
 
+        Button aInventario = (Button) v.findViewById(R.id.boton_ver_inventario);
+
         return v;
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (!(context instanceof Callbacks)) {
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (!(activity instanceof Callbacks)) {
             throw new IllegalStateException("Activity must implement fragment's callbacks.");
         }
 
-        mCallbacks = (Callbacks) context;
+        mCallbacks = (Callbacks) activity;
     }
 
     @Override
@@ -131,10 +144,5 @@ public class LaberintosListFragment extends ListFragment implements View.OnClick
         Toast.makeText(getContext(), laberinto.getNombreLaberinto(), Toast.LENGTH_LONG).show();
 
         mCallbacks.onItemSelected(laberinto);
-    }
-
-    @Override
-    public void onClick(View v) {
-        obtenerLaberintos();
     }
 }

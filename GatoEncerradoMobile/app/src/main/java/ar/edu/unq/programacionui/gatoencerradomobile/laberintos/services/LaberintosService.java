@@ -1,17 +1,19 @@
 package ar.edu.unq.programacionui.gatoencerradomobile.laberintos.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.programacionui.gatoencerradomobile.laberintos.domain.Item;
 import ar.edu.unq.programacionui.gatoencerradomobile.laberintos.domain.Laberinto;
 import retrofit.Call;
 import retrofit.http.GET;
 import retrofit.http.Path;
 
-/**
- * Created by rs21 on 14/06/16.
- */
 public interface LaberintosService {
 
-    @GET("laberintos/{idUsuario}")
-    public Call<List<Laberinto>> getLaberintos(@Path("idUsuario") String id);
+    @GET("laberintosMobile/{idUsuario}")
+    public Call<List<Laberinto>> getLaberintosMobile(@Path("idUsuario") String id);
+
+    @GET("inventario/{idUsuario}")
+    public Call<ArrayList<Item>> getInventario(@Path("idUsuario") String id);
 }

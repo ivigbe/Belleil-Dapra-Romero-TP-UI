@@ -28,3 +28,22 @@ class LaberintoMinificado {
 		pathImagenLaberinto = path
 	}
 }
+
+@Accessors	
+class LaberintoMobile{
+	
+	String nombreLaberinto
+	Integer idLaberinto
+	String pathImagenLaberinto
+	String descripcionLaberinto
+	ArrayList<Item> inventarioDelJugador = new ArrayList<Item>(15)
+	
+	new(Integer id, String nombre, String path, String descripcion, ArrayList<Item> inventario){
+		
+		idLaberinto = id
+		nombreLaberinto = nombre
+		pathImagenLaberinto = path
+		descripcionLaberinto = descripcion
+		inventarioDelJugador = inventario
+	}
+}
