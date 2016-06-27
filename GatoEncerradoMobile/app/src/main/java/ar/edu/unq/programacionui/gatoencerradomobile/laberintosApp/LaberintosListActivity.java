@@ -18,6 +18,12 @@ public class LaberintosListActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.list_toolbar);
         setSupportActionBar(toolbar);
+
+        LaberintosListFragment fragment = new LaberintosListFragment();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_laberintos_list, fragment)
+                .commit();
     }
 
     @Override

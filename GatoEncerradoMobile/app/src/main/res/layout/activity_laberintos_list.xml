@@ -21,7 +21,7 @@
 
 		<fragment
 			android:id="@+id/fragment_laberintos_list"
-			class="ar.edu.unq.programacionui.gatoencerradomobile.laberintosApp.LaberintosListFragment"
+			android:name="ar.edu.unq.programacionui.gatoencerradomobile.laberintosApp.LaberintosListFragment"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"/>
 

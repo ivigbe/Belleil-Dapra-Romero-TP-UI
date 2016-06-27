@@ -31,7 +31,7 @@ public class InventarioListActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventario_list);
 
-        String BASE_URL = "http://192.168.0.21:9500/inventario";
+        String BASE_URL = "http://192.168.0.21:9500/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -40,7 +40,7 @@ public class InventarioListActivity extends AppCompatActivity{
 
         laberintosService = retrofit.create(LaberintosService.class);
 
-        final ListView list = (ListView) findViewById(R.id.list_inventario);
+        ListView list = (ListView) findViewById(R.id.list_inventario);
 
         obtenerInventario(list);
     }
@@ -49,7 +49,7 @@ public class InventarioListActivity extends AppCompatActivity{
 
         final ListView listV = list;
 
-        final Call<ArrayList<Item>> inventarioCall = laberintosService.getInventario("1");
+        Call<ArrayList<Item>> inventarioCall = laberintosService.getInventario("1");
 
         inventarioCall.enqueue(new Callback<ArrayList<Item>>() {
             @Override

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import ar.edu.unq.programacionui.gatoencerradomobile.R;
 import ar.edu.unq.programacionui.gatoencerradomobile.laberintos.domain.Laberinto;
 
-public class LaberintoDetailFragment extends Fragment /*implements View.OnClickListener*/{
+public class LaberintoDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
     private Laberinto laberinto;
@@ -31,16 +31,6 @@ public class LaberintoDetailFragment extends Fragment /*implements View.OnClickL
     public LaberintoDetailFragment() {
         // Required empty public constructor
     }
-
-    /*private void irAInventario(){
-
-        Intent detailIntent = new Intent(this, InventarioListActivity.class);
-        Log.w("Pelis", laberinto.getNombreLaberinto());
-        Bundle b = new Bundle();
-        b.putParcelableArrayList("InventarioJugador", (ArrayList<? extends Parcelable>) laberinto.getInventarioDelJugador());
-        detailIntent.putExtra("Inventario", b);
-        startActivity(detailIntent);
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,13 +56,10 @@ public class LaberintoDetailFragment extends Fragment /*implements View.OnClickL
 
         if (laberinto != null) {
             ((TextView) rootView.findViewById(R.id.descripcion_laberinto)).setText(laberinto.getDescripcionLaberinto());
-            ImageView imgGenero = ((ImageView) rootView.findViewById(R.id.imagen_laberinto));
-            imgGenero.setImageDrawable(getResources().getDrawable(laberinto.getPathImagenLaberinto()));
+            ImageView imgLaberinto = ((ImageView) rootView.findViewById(R.id.imagen_laberinto));
+            imgLaberinto.setImageDrawable(getResources().getDrawable(laberinto.getPathImagenLaberinto()));
         }
 
         return rootView;
     }
-
-    /*@Override
-    public void onClick(View v) {irAInventario();}*/
 }

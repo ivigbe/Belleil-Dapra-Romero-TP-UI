@@ -8,10 +8,9 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/imagen_laberinto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imagen_laberinto"
-            android:src="@drawable/laberinto_seleccionado"
             android:scaleType="fitCenter"
             android:layout_gravity="center_horizontal|top"
             android:layout_above="@+id/descripcion_laberinto"
@@ -22,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/descripcionLaberintoMockup"
             android:id="@+id/descripcion_laberinto"
             android:textColor="#212121"
             android:textAlignment="center"
